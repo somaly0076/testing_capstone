@@ -62,6 +62,10 @@ exports.updateMe = catchAsync(async (req, res, next) => {
 });
 
 exports.deleteMe = catchAsync(async (req, res, next) => {
+  console.log("DeleteMe request received");
+  console.log("User ID:", req.user.id);
+
+  // Assuming you want to mark the user as inactive
   await User.update(
     { active: false },
     {

@@ -1,16 +1,24 @@
-// src/components/Logout.js
 import React from "react";
-import { useDispatch } from "react-redux";
-import { logoutUser } from "../redux/authSlice";
+import { useNavigate } from "react-router-dom";
+import Button from "@mui/material/Button";
 
-const Logout = () => {
-  const dispatch = useDispatch();
+export default function LogoutButton() {
+  const navigate = useNavigate();
 
   const handleLogout = () => {
-    dispatch(logoutUser());
+    // Clear authentication token or user data (depends on your auth strategy)
+    localStorage.removeItem("authToken"); // Example: clearing token from localStorage
+
+    // Optionally, clear other user data
+    // localStorage.removeItem('user');
+
+    // Redirect to the login page
+    navigate("/login");
   };
 
-  return <button onClick={handleLogout}>Logout</button>;
-};
-
-export default Logout;
+  return (
+    <Button variant="contained" color="primary" onClick={handleLogout}>
+      Logout
+    </Button>
+  );
+}

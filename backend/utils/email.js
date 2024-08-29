@@ -1,8 +1,12 @@
 const nodemailer = require("nodemailer");
+const dotenv = require("dotenv");
+const catchAsync = require("./catchAsync");
 
-const sendEmail = async (options) => {
+dotenv.config();
+
+const sendEmail = catchAsync(async (options) => {
   try {
-    // 1) Create a transporter
+    // Create a transporter
     const transporter = nodemailer.createTransport({
       host: process.env.EMAIL_HOST,
       port: process.env.EMAIL_PORT,
@@ -12,7 +16,7 @@ const sendEmail = async (options) => {
       },
     });
 
-    // 2) Define the email options
+    // Define the email options
     const mailOptions = {
       from: "Your Name <your-email@example.com>",
       to: options.email,
@@ -21,12 +25,12 @@ const sendEmail = async (options) => {
       html: options.html || "",
     };
 
-    // 3) Actually send the email
+    // Actually send the email
     await transporter.sendMail(mailOptions);
   } catch (error) {
     console.error("Error sending email:", error);
-    throw new Error("Failed to send email. Please try again later.");
+    throw new Error(`Failed to send email: ${error.message}`);
   }
-};
+});
 
 module.exports = sendEmail;

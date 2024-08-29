@@ -22,7 +22,14 @@ const router = express.Router();
 router.post("/signup", signup);
 router.post("/login", login);
 router.post("/forgotPassword", forgotPassword);
-router.patch("/resetPassword/:token", resetPassword);
+router.patch(
+  "/resetPassword/:token",
+  (req, res, next) => {
+    console.log("Reset password route hit");
+    next();
+  },
+  resetPassword
+);
 router.patch("/updateMyPassword", protect, updatePassword);
 
 router.patch("/updateMe", protect, updateMe);

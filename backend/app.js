@@ -13,7 +13,12 @@ const userRouter = require("./routes/userRoutes.js");
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000", // Adjust based on your frontend origin
+    allowedHeaders: ["Authorization", "Content-Type"],
+  })
+);
 app.use(helmet());
 app.use(compress());
 

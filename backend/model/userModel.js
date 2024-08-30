@@ -7,23 +7,42 @@ const validator = require("validator");
 const User = sequelize.define(
   "User",
   {
-    name: {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    firstName: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        notEmpty: { msg: "Please tell us your name!" },
+        notEmpty: { msg: "Please tell us your first name!" },
       },
     },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: { msg: "Please tell us your last name!" },
+      },
+    },
+    name: {
+      type: DataTypes.VIRTUAL,
+      get() {
+        return `${this.firstName} ${this.lastName}`;
+      },
+    }, // user do not need to provide a name
     email: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: { msg: "Email already exists" },
       validate: {
-        isEmail: { msg: "Please provide a valid email" },
+        isEmail: { msg: "Please provide a valid email!" },
       },
     },
     photo: {
       type: DataTypes.STRING,
+      default: "default.jpg",
     },
     role: {
       type: DataTypes.STRING,
@@ -58,6 +77,31 @@ const User = sequelize.define(
     },
     passwordResetExpires: {
       type: DataTypes.DATE,
+    },
+    bio: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+      validate: {
+        len: [0, 500],
+      },
+    },
+    entity: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    phoneNumber: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        is: {
+          args: /^[0-9\-\+]{9,15}$/,
+          msg: "Please provide a valid phone number!",
+        },
+      },
+    },
+    address: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
     active: {
       type: DataTypes.BOOLEAN,

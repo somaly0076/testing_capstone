@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "@mui/material"; // Ensure you have imported Button from Material-UI
+import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -8,17 +8,15 @@ export default function DeleteMeButton() {
 
   const handleDelete = async () => {
     try {
-      const response = await axios.delete(
-        "http://localhost:4000/api/users/deleteMe",
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`, // Ensure this token is not undefined
-          },
-        }
-      );
+      const response = await axios.delete("/api/users/deleteMe", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
 
       console.log("Profile marked as inactive:", response.data);
       localStorage.removeItem("token");
+      localStorage.removeItem("id");
       navigate("/home");
     } catch (err) {
       console.error(
@@ -29,7 +27,7 @@ export default function DeleteMeButton() {
   };
 
   return (
-    <Button variant="contained" color="secondary" onClick={handleDelete}>
+    <Button variant="contained" color="danger" onClick={handleDelete}>
       Delete Me
     </Button>
   );

@@ -1,4 +1,4 @@
-const AppError = require("../utils/appError"); // Ensure path is correct
+const AppError = require("../utils/appError");
 
 const handleSequelizeValidationErrorDB = (err) => {
   const errors = err.errors.map((el) => el.message);

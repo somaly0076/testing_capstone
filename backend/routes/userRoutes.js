@@ -7,6 +7,7 @@ const {
   getUser,
   updateUser,
   deleteUser,
+  getUserById,
 } = require("../controllers/userController");
 
 const {
@@ -19,6 +20,7 @@ const {
 } = require("../controllers/authController");
 
 const router = express.Router();
+router.get("/myprofile", protect, getUserById);
 router.post("/signup", signup);
 router.post("/login", login);
 router.post("/forgotPassword", forgotPassword);

@@ -6,11 +6,9 @@ export default function LogoutButton() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Clear authentication token or user data (depends on your auth strategy)
-    localStorage.removeItem("authToken"); // Example: clearing token from localStorage
+    localStorage.removeItem("token");
 
-    // Optionally, clear other user data
-    // localStorage.removeItem('user');
+    localStorage.removeItem("id");
 
     // Redirect to the login page
     navigate("/login");

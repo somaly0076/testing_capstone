@@ -1,37 +1,8 @@
 import React, { useState } from "react";
-import axios from "axios";
-import { makeStyles } from "@mui/styles";
-import { Typography, TextField, Button, Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-
-const useStyles = makeStyles((theme) => ({
-  container: {
-    maxWidth: 400,
-    margin: "auto",
-    padding: "20px",
-    borderRadius: 10,
-    boxShadow: "0px 0px 10px rgba(0,0,0,0.1)",
-    backgroundColor: "#fff",
-    marginTop: "32px",
-  },
-  form: {
-    display: "flex",
-    flexDirection: "column",
-  },
-  textField: {
-    marginBottom: "16px",
-  },
-  button: {
-    backgroundColor: "#1976d2",
-    color: "white",
-    "&:hover": {
-      backgroundColor: "#115293",
-    },
-  },
-}));
+import axios from "axios";
 
 export default function ForgotPassword() {
-  const classes = useStyles();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -41,10 +12,7 @@ export default function ForgotPassword() {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        "http://localhost:4000/api/users/forgotPassword",
-        { email }
-      );
+      const response = await axios.post("/api/users/forgotPassword", { email });
 
       setMessage("Password reset link has been sent to your email.");
       setError("");
@@ -58,34 +26,30 @@ export default function ForgotPassword() {
   };
 
   return (
-    <Container className={classes.container}>
-      <Typography variant="h4" gutterBottom>
-        Forgot Password
-      </Typography>
-      <form className={classes.form} onSubmit={handleSubmit}>
-        <TextField
-          label="Email"
-          type="email"
-          variant="outlined"
-          className={classes.textField}
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <Button type="submit" variant="contained" className={classes.button}>
+    <div className="max-w-md mx-auto p-6 bg-white shadow-lg rounded-lg mt-12">
+      <h1 className="text-3xl font-bold text-center mb-6">Forgot Password</h1>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="relative">
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className="w-full h-12 border border-gray-300 rounded-md px-4 py-2 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        <button
+          type="submit"
+          className="w-full h-12 bg-blue-600 text-white font-bold rounded-full shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
           Send Reset Link
-        </Button>
+        </button>
         {message && (
-          <Typography color="primary" variant="body2" style={{ marginTop: 16 }}>
-            {message}
-          </Typography>
+          <p className="text-green-500 text-center mt-4">{message}</p>
         )}
-        {error && (
-          <Typography color="error" variant="body2" style={{ marginTop: 16 }}>
-            {error}
-          </Typography>
-        )}
+        {error && <p className="text-red-500 text-center mt-4">{error}</p>}
       </form>
-    </Container>
+    </div>
   );
 }

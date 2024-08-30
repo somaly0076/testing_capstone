@@ -43,13 +43,10 @@ export default function ResetPassword() {
     e.preventDefault();
 
     try {
-      await axios.patch(
-        `http://localhost:4000/api/users/resetPassword/${token}`,
-        {
-          password,
-          passwordConfirm,
-        }
-      );
+      await axios.patch(`/api/users/resetPassword/${token}`, {
+        password,
+        passwordConfirm,
+      });
 
       setMessage(
         "Password reset successful. You can now log in with your new password."

@@ -10,6 +10,18 @@ const filterObj = (obj, ...allowedFields) => {
   return newObj;
 };
 
+exports.getUserById = catchAsync(async (req, res, next) => {
+  // Ensure req.user is attached by middleware
+  if (!req.user) {
+    return res.status(401).json({ message: "User not authenticated" });
+  }
+
+  // Use the user ID from req.user
+  const { id, firstName, lastName, email } = req.user; // Ensure these field names match your model
+
+  res.status(200).json({ id, name: `${firstName} ${lastName}`, email });
+});
+
 exports.getAllUsers = catchAsync(async (req, res, next) => {
   const users = await User.findAll({
     attributes: {
@@ -65,7 +77,7 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
   console.log("DeleteMe request received");
   console.log("User ID:", req.user.id);
 
-  // Assuming you want to mark the user as inactive
+  // Deactivate the user (soft delete)
   await User.update(
     { active: false },
     {

@@ -15,7 +15,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:3000", // Adjust based on your frontend origin
+    origin: process.env.ORIGIN, // Adjust based on your frontend origin
     allowedHeaders: ["Authorization", "Content-Type"],
   })
 );

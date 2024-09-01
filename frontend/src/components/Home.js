@@ -1,12 +1,14 @@
-import DeleteMeButton from "./DeleteMe";
-import LogoutButton from "./Logout";
+import React from "react";
+import { Link } from "react-router-dom";
+import { FaUser } from "react-icons/fa";
 
 export default function Home() {
   return (
-    <h1>
-      Welcome to the Home Page
-      <LogoutButton />
-      <DeleteMeButton />
-    </h1>
+    <React.Fragment>
+      <h1>Welcome to the Home Page</h1>
+      <Link to="/profile">
+        <FaUser />
+      </Link>
+    </React.Fragment>
   );
 }

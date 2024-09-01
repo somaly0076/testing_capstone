@@ -1,3 +1,5 @@
+const dotenv = require("dotenv");
+dotenv.config();
 const crypto = require("crypto");
 const { promisify } = require("util");
 const jwt = require("jsonwebtoken");
@@ -6,9 +8,6 @@ const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 const sendEmail = require("../utils/email");
 const { Op } = require("sequelize");
-const dotenv = require("dotenv");
-
-dotenv.config();
 
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -45,13 +44,21 @@ const createSendToken = (user, statusCode, res) => {
 
 // USER SIGNUP
 exports.signup = catchAsync(async (req, res, next) => {
-  const { firstName, lastName, email, password, passwordConfirm } = req.body;
+  const { firstName, lastName, userName, email, password, passwordConfirm } =
+    req.body;
   const userExists = await User.findOne({ where: { email } });
   if (userExists) {
     return next(new AppError("Email already exists!", 400));
   }
 
-  if (!firstName || !lastName || !email || !password || !passwordConfirm) {
+  if (
+    !firstName ||
+    !lastName ||
+    !userName ||
+    !email ||
+    !password ||
+    !passwordConfirm
+  ) {
     return next(new AppError("Please provide all required fields!", 400));
   }
 
@@ -59,7 +66,13 @@ exports.signup = catchAsync(async (req, res, next) => {
     return next(new AppError("Passwords do not match.", 400));
   }
 
-  const newUser = await User.create({ firstName, lastName, email, password });
+  const newUser = await User.create({
+    firstName,
+    lastName,
+    userName,
+    email,
+    password,
+  });
   createSendToken(newUser, 201, res);
 });
 

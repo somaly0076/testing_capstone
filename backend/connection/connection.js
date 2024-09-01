@@ -3,27 +3,26 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-const sequelize = new Sequelize(
-  process.env.DB_NAME,
-  process.env.DB_USER,
-  process.env.DB_PASSWORD,
-  {
-    host: process.env.DB_HOST,
-    dialect: "mysql",
-    logging: true,
-  }
-);
+// Create a Sequelize instance using the DATABASE_URL environment variable
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
+  dialect: "mysql",
+  logging: false,
+});
 
-// Test the connection
-async function authenticateDatabase() {
+// Function to authenticate and sync the database
+async function initializeDatabase() {
   try {
     await sequelize.authenticate();
-    console.log("Connection has been established successfully.");
-  } catch (error) {
-    console.error("Unable to connect to the database:", error);
+    console.log("DB connection successful!");
+
+    await sequelize.sync();
+    console.log("Synced models with the database");
+  } catch (err) {
+    console.error("Unable to connect to the database:", err);
   }
 }
 
-authenticateDatabase();
+// Initialize the database connection and sync models
+initializeDatabase();
 
 module.exports = sequelize;

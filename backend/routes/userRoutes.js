@@ -1,26 +1,27 @@
 const express = require("express");
 const {
-  updateMe,
-  deleteMe,
-  getAllUsers,
-  createUser,
-  getUser,
-  updateUser,
-  deleteUser,
-  getUserById,
-} = require("../controllers/userController");
-
-const {
   signup,
   login,
   forgotPassword,
   resetPassword,
-  protect,
   updatePassword,
+  protect,
 } = require("../controllers/authController");
 
+const {
+  getUserProfile,
+  updateUserBio,
+  deleteUser,
+  updateUser,
+  getAllUsers,
+  photoUpload,
+} = require("../controllers/userController");
+const multer = require("multer");
+const upload = require("../utils/storage");
+
 const router = express.Router();
-router.get("/myprofile", protect, getUserById);
+
+// Authentication routes
 router.post("/signup", signup);
 router.post("/login", login);
 router.post("/forgotPassword", forgotPassword);
@@ -34,10 +35,17 @@ router.patch(
 );
 router.patch("/updateMyPassword", protect, updatePassword);
 
-router.patch("/updateMe", protect, updateMe);
-router.delete("/deleteMe", protect, deleteMe);
+// User routes
+router
+  .route("/profile")
+  .get(protect, getUserProfile)
+  .patch(protect, updateUserBio)
+  .delete(protect, deleteUser);
 
-router.route("/").get(getAllUsers).post(createUser);
-router.route("/:id").get(getUser).patch(updateUser).delete(deleteUser);
+router.route("/me").patch(protect, updateUser);
+
+router.route("/").get(getAllUsers);
+
+router.post("/uploadPhoto", protect, upload.single("photo"), photoUpload);
 
 module.exports = router;

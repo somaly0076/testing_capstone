@@ -15,7 +15,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: process.env.ORIGIN, // Adjust based on your frontend origin
+    origin: process.env.ORIGIN,
     allowedHeaders: ["Authorization", "Content-Type"],
   })
 );
@@ -38,10 +38,10 @@ app.use(mongoSanitize());
 app.use(xss());
 app.use(
   hpp({
-    whitelist: ["role", "active", "email", "name", "createdAt", "updatedAt"],
+    whitelist: ["role", "active", "phoneNumber", "address"],
   })
 );
-
+app.use(globalErrorHandler);
 app.use(express.static(`${__dirname}/public`));
 
 app.use((req, res, next) => {
@@ -50,8 +50,5 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/users", userRouter);
-
-// Global error handler
-app.use(globalErrorHandler);
 
 module.exports = app;

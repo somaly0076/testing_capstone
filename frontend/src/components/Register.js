@@ -1,44 +1,55 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { register } from "../features/auth/authSlice";
 
 export default function Register() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { message, error, status } = useSelector((state) => state.auth);
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [userName, setUserName] = useState(""); // Added userName state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
-  const [message, setMessage] = useState("");
-  const [error, setError] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     if (password !== passwordConfirm) {
-      setError("Passwords do not match");
-      setMessage("");
+      alert("Passwords do not match");
       return;
     }
 
-    try {
-      const response = await axios.post("/api/users/signup", {
+    // Log form data for debugging
+    console.log({
+      firstName,
+      lastName,
+      userName,
+      email,
+      password,
+      passwordConfirm,
+    });
+
+    dispatch(
+      register({
         firstName,
         lastName,
+        userName,
         email,
         password,
         passwordConfirm,
-      });
-
-      setMessage("Registration successful. You can now log in.");
-      setError("");
-
-      navigate("/login");
-    } catch (err) {
-      setError("Failed to register. Please try again.");
-      setMessage("");
-    }
+      })
+    );
   };
+
+  React.useEffect(() => {
+    if (status === "succeeded") {
+      navigate("/information");
+    }
+  }, [status, navigate]);
 
   return (
     <div className="max-w-lg mx-auto p-6 bg-white shadow-lg rounded-lg mt-8">
@@ -60,6 +71,16 @@ export default function Register() {
             placeholder="Last Name"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
+            required
+            className="w-full h-12 border border-gray-300 rounded-md px-4 py-2 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        <div className="relative">
+          <input
+            type="text"
+            placeholder="Username" // Updated placeholder
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
             required
             className="w-full h-12 border border-gray-300 rounded-md px-4 py-2 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
@@ -96,9 +117,12 @@ export default function Register() {
         </div>
         <button
           type="submit"
-          className="w-full h-12 bg-blue-600 text-white font-bold rounded-full shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className={`w-full h-12 bg-blue-600 text-white font-bold rounded-full shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+            status === "loading" ? "opacity-50 cursor-not-allowed" : ""
+          }`}
+          disabled={status === "loading"}
         >
-          Register
+          {status === "loading" ? "Registering..." : "Register"}
         </button>
         {message && (
           <p className="text-green-500 text-center mt-4">{message}</p>

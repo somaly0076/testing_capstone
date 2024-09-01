@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
 const sequelize = require("../connection/connection");
 const validator = require("validator");
+const { type } = require("os");
 
 const User = sequelize.define(
   "User",
@@ -26,6 +27,21 @@ const User = sequelize.define(
         notEmpty: { msg: "Please tell us your last name!" },
       },
     },
+    userName: {
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: false,
+      validate: {
+        notEmpty: { msg: "Please provide a unique username!" },
+        isAlphanumeric: {
+          msg: "Username can only contain alphanumeric characters",
+        },
+        isLength: {
+          args: [5, 20],
+          msg: "Username must be between 5 and 20 characters long",
+        },
+      },
+    },
     name: {
       type: DataTypes.VIRTUAL,
       get() {
@@ -38,6 +54,13 @@ const User = sequelize.define(
       unique: { msg: "Email already exists" },
       validate: {
         isEmail: { msg: "Please provide a valid email!" },
+      },
+    },
+    gender: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        isIn: [["male", "female", "other"]],
       },
     },
     photo: {

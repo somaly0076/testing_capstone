@@ -3,12 +3,12 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-export default function DeleteMeButton() {
+export default function DeleteUserButton() {
   const navigate = useNavigate();
 
   const handleDelete = async () => {
     try {
-      const response = await axios.delete("/api/users/deleteMe", {
+      const response = await axios.delete("/api/users/profile", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -28,7 +28,7 @@ export default function DeleteMeButton() {
 
   return (
     <Button variant="contained" color="danger" onClick={handleDelete}>
-      Delete Me
+      Delete User
     </Button>
   );
 }

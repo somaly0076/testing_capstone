@@ -1,4 +1,4 @@
-export const NODE_ENV = "development";
+export const NODE_ENV = "production";
 export const PORT = 3000 || "..."; // change later
 export const FETCH_PROFILE = (username) => `/api/users/profile/${username}`;
 export const LOGIN_URL = "/api/users/login";

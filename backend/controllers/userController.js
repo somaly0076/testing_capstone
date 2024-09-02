@@ -131,7 +131,7 @@ exports.updateUserProfile = async (req, res) => {
 
 // Delete a user
 exports.deleteUser = catchAsync(async (req, res, next) => {
-  console.log("DeleteMe request received");
+  console.log("Delete User request received");
   console.log("User ID:", req.user.id);
 
   // Deactivate the user (soft delete)

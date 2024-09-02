@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { register } from "../features/auth/authSlice";
+import { NODE_ENV } from "../constants";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -24,14 +25,16 @@ export default function Register() {
     }
 
     // Log form data for debugging
-    console.log({
-      firstName,
-      lastName,
-      userName,
-      email,
-      password,
-      passwordConfirm,
-    });
+    if (NODE_ENV !== "production") {
+      console.log({
+        firstName,
+        lastName,
+        userName,
+        email,
+        password,
+        passwordConfirm,
+      });
+    }
 
     dispatch(
       register({

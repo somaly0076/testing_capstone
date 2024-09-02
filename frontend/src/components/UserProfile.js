@@ -1,25 +1,31 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchProfile,
   updateProfile,
   setEditing,
   setNewBio,
-  setNewPhoto,
   resetState,
 } from "../features/user/userSlice";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function UserProfile() {
   const dispatch = useDispatch();
-  const { profile, loading, error, isEditing, newBio, newPhoto } = useSelector(
+  const navigate = useNavigate();
+  const { profile, loading, error, isEditing, newBio } = useSelector(
     (state) => state.user
   );
   const fileInputRef = useRef(null);
+  const [newPhoto, setNewPhoto] = useState(null);
 
   useEffect(() => {
-    dispatch(fetchProfile());
-  }, [dispatch]);
+    const userName = localStorage.getItem("username");
+    if (userName) {
+      dispatch(fetchProfile(userName)); // Pass the username to fetchProfile
+    } else {
+      navigate("/login");
+    }
+  }, [dispatch, navigate]);
 
   const handleEditClick = () => {
     dispatch(setEditing(true));
@@ -31,6 +37,7 @@ export default function UserProfile() {
     if (fileInputRef.current) {
       fileInputRef.current.value = null;
     }
+    setNewPhoto(null);
   };
 
   const handleBioChange = (e) => {
@@ -38,21 +45,30 @@ export default function UserProfile() {
   };
 
   const handlePhotoChange = (e) => {
-    dispatch(setNewPhoto(e.target.files[0]));
+    setNewPhoto(e.target.files[0]);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const userName = localStorage.getItem("username"); // Get the username from localStorage
+
+    if (!userName) {
+      console.error("User Name not found in localStorage");
+      return;
+    }
+
     const formData = new FormData();
-    formData.append("photo", newPhoto);
+    formData.append("bio", newBio);
+    if (newPhoto) {
+      formData.append("photo", newPhoto);
+    }
 
     try {
-      const response = await axios.post("/api/users/uploadPhoto", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-      console.log("File uploaded:", response.data.filePath);
+      await dispatch(updateProfile({ userName, formData })).unwrap();
+      setNewPhoto(null);
     } catch (err) {
-      console.error("Error uploading file:", err);
+      console.error("Error updating profile:", err);
     }
   };
 
@@ -89,6 +105,7 @@ export default function UserProfile() {
                 ref={fileInputRef}
                 onChange={handlePhotoChange}
                 className="mb-2"
+                accept="image/*"
               />
               {newPhoto && (
                 <img
@@ -112,7 +129,7 @@ export default function UserProfile() {
         <p>
           <strong>Bio:</strong>{" "}
           {isEditing ? (
-            <form onSubmit={handleSubmit}>
+            <>
               <textarea
                 value={newBio}
                 onChange={handleBioChange}
@@ -120,7 +137,8 @@ export default function UserProfile() {
                 className="w-full h-24 border border-gray-300 rounded-md px-4 py-2 text-gray-700 placeholder-gray-400 focus:ring-2 focus:ring-blue-500"
               />
               <button
-                type="submit"
+                type="button"
+                onClick={handleSubmit}
                 className="bg-blue-600 text-white px-4 py-2 rounded mt-2"
               >
                 Save
@@ -132,7 +150,7 @@ export default function UserProfile() {
               >
                 Cancel
               </button>
-            </form>
+            </>
           ) : (
             <>
               {profile.bio || "Please fill some bio"}

@@ -3,6 +3,7 @@ const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 const storage = require("../utils/storage");
 
+// Filter objects
 const filterObj = (obj, ...allowedFields) => {
   const newObj = {};
   Object.keys(obj).forEach((el) => {
@@ -24,7 +25,7 @@ exports.getAllUsers = catchAsync(async (req, res, next) => {
     },
   });
 
-  // SEND RESPONSE
+  // Send response
   res.status(200).json({
     status: "success",
     results: users.length,
@@ -34,10 +35,13 @@ exports.getAllUsers = catchAsync(async (req, res, next) => {
   });
 });
 
-// Get user profile
 exports.getUserProfile = async (req, res) => {
   try {
-    const user = await User.findByPk(req.user.id);
+    const { username } = req.params; // Extract the username from the route parameter
+
+    console.log(username);
+
+    const user = await User.findOne({ where: { userName: username } }); // Find the user by username
 
     if (!user) {
       return res.status(404).json({ error: "User not found" });
@@ -57,6 +61,20 @@ exports.getUserProfile = async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 };
+
+// try {
+//   const { username } = req.params;
+//   const user = await User.findOne({ where: { userName: username } });
+
+//   if (!user) {
+//     return res.status(404).json({ message: "User not found!" });
+//   }
+
+//   res.status(200).json(user);
+// } catch (error) {
+//   res
+//     .status(500)
+//     .json({ message: "Failed to fetch profile", error: error.message });
 
 // Update user profile
 exports.updateUser = catchAsync(async (req, res, next) => {
@@ -78,20 +96,32 @@ exports.updateUser = catchAsync(async (req, res, next) => {
 });
 
 // Update user (bio)
-exports.updateUserBio = async (req, res) => {
+exports.updateUserProfile = async (req, res) => {
   try {
-    const userId = req.user.id;
+    const { username } = req.params;
     const { bio } = req.body;
 
-    const user = await User.findByPk(userId);
+    const user = await User.findOne({ where: { userName: username } });
     if (!user) {
       return res.status(404).json({ message: "User not found!" });
     }
 
-    user.bio = bio || user.bio; // Update only if bio is provided
+    if (bio) {
+      user.bio = bio;
+    }
+
+    // Handle photo upload
+    if (req.file) {
+      if (user.photo) {
+        fs.unlinkSync(path.join("uploads/", user.photo));
+      }
+
+      user.photo = req.file.filename;
+    }
+
     await user.save();
 
-    res.status(200).json({ message: "Bio updated successfully", user });
+    res.status(200).json({ message: "Profile updated successfully", user });
   } catch (error) {
     res
       .status(500)
@@ -119,7 +149,7 @@ exports.deleteUser = catchAsync(async (req, res, next) => {
 });
 
 // Upload a new file
-exports.photoUpload = async (req, res) => {
+exports.photoUpload = catchAsync(async (req, res) => {
   try {
     const { id } = req.user;
     const user = await User.findByPk(id);
@@ -139,4 +169,4 @@ exports.photoUpload = async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: "Server error" });
   }
-};
+});

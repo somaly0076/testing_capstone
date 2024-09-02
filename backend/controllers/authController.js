@@ -9,12 +9,14 @@ const AppError = require("../utils/appError");
 const sendEmail = require("../utils/email");
 const { Op } = require("sequelize");
 
+// Token creation
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES,
   });
 };
 
+// Token send
 const createSendToken = (user, statusCode, res) => {
   const token = signToken(user.id);
   const cookieOptions = {
@@ -31,18 +33,20 @@ const createSendToken = (user, statusCode, res) => {
   user.password = undefined;
 
   const id = user.id;
+  const userName = user.userName;
 
   res.status(statusCode).json({
     status: "success",
     token,
     id,
+    userName,
     data: {
       user,
     },
   });
 };
 
-// USER SIGNUP
+// User signup
 exports.signup = catchAsync(async (req, res, next) => {
   const { firstName, lastName, userName, email, password, passwordConfirm } =
     req.body;
@@ -76,7 +80,7 @@ exports.signup = catchAsync(async (req, res, next) => {
   createSendToken(newUser, 201, res);
 });
 
-// USER LOGIN
+// User login
 exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
 
@@ -86,7 +90,7 @@ exports.login = catchAsync(async (req, res, next) => {
 
   const user = await User.findOne({
     where: { email },
-    attributes: ["id", "password"],
+    attributes: ["id", "userName", "password"],
   });
 
   if (!user || !(await user.correctPassword(password))) {
@@ -96,7 +100,7 @@ exports.login = catchAsync(async (req, res, next) => {
   createSendToken(user, 200, res);
 });
 
-// ROUTE PROTECT
+// Protected route to check whether the user is authenticated
 exports.protect = catchAsync(async (req, res, next) => {
   let token;
   if (
@@ -125,7 +129,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   next();
 });
 
-// ADMIN ONLY ROUTE
+// Admin only routes
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
@@ -138,7 +142,7 @@ exports.restrictTo = (...roles) => {
   };
 };
 
-// FORGET PASSWORD
+// Forgot password
 exports.forgotPassword = catchAsync(async (req, res, next) => {
   const user = await User.findOne({ where: { email: req.body.email } });
   if (!user) {
@@ -180,7 +184,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   }
 });
 
-// RESET PASSWORD
+// Reset password
 exports.resetPassword = catchAsync(async (req, res, next) => {
   const hashedToken = crypto
     .createHash("sha256")
@@ -207,7 +211,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   createSendToken(user, 200, res);
 });
 
-// UPDATE PASSWORD
+// Update password
 exports.updatePassword = catchAsync(async (req, res, next) => {
   const user = await User.findByPk(req.user.id);
 

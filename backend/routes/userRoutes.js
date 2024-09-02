@@ -7,19 +7,21 @@ const {
   updatePassword,
   protect,
 } = require("../controllers/authController");
+const multer = require("multer");
 
 const {
   getUserProfile,
-  updateUserBio,
+  updateUserProfile,
   deleteUser,
-  updateUser,
   getAllUsers,
   photoUpload,
 } = require("../controllers/userController");
-const multer = require("multer");
-const upload = require("../utils/storage");
+const storage = require("./../utils/storage");
+const upload = multer({ storage });
 
 const router = express.Router();
+
+router.route("/").get(getAllUsers);
 
 // Authentication routes
 router.post("/signup", signup);
@@ -37,15 +39,13 @@ router.patch("/updateMyPassword", protect, updatePassword);
 
 // User routes
 router
-  .route("/profile")
+  .route("/profile/:username")
   .get(protect, getUserProfile)
-  .patch(protect, updateUserBio)
+  .patch(protect, updateUserProfile)
   .delete(protect, deleteUser);
 
-router.route("/me").patch(protect, updateUser);
+// router.route("/me").patch(protect, updateUser);
 
-router.route("/").get(getAllUsers);
-
-router.post("/uploadPhoto", protect, upload.single("photo"), photoUpload);
+router.post("/uploadPhoto", protect, upload.single("image"), photoUpload);
 
 module.exports = router;

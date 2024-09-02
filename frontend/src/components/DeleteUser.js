@@ -14,7 +14,7 @@ export default function DeleteUserButton() {
         },
       });
 
-      console.log("Profile marked as inactive:", response.data);
+      console.log("Profile marked as inactive", response.data);
       localStorage.removeItem("token");
       localStorage.removeItem("id");
       navigate("/home");

@@ -6,8 +6,10 @@ import {
   setEditing,
   setNewBio,
   resetState,
-} from "../features/user/userSlice";
+} from "../features/slices/userSlice";
 import { useNavigate } from "react-router-dom";
+import Button from "@mui/material/Button";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 export default function UserProfile() {
   const dispatch = useDispatch();
@@ -21,7 +23,7 @@ export default function UserProfile() {
   useEffect(() => {
     const userName = localStorage.getItem("username");
     if (userName) {
-      dispatch(fetchProfile(userName)); // Pass the username to fetchProfile
+      dispatch(fetchProfile(userName));
     } else {
       navigate("/login");
     }
@@ -51,7 +53,7 @@ export default function UserProfile() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const userName = localStorage.getItem("username"); // Get the username from localStorage
+    const userName = localStorage.getItem("username");
 
     if (!userName) {
       console.error("User Name not found in localStorage");
@@ -100,13 +102,20 @@ export default function UserProfile() {
           />
           {isEditing && (
             <div className="ml-4">
-              <input
-                type="file"
-                ref={fileInputRef}
-                onChange={handlePhotoChange}
-                className="mb-2"
-                accept="image/*"
-              />
+              <Button
+                component="label"
+                variant="contained"
+                startIcon={<CloudUploadIcon />}
+              >
+                Upload files
+                <input
+                  type="file"
+                  onChange={handlePhotoChange}
+                  multiple
+                  style={{ display: "none" }} // Hides the input
+                  ref={fileInputRef}
+                />
+              </Button>
               {newPhoto && (
                 <img
                   src={URL.createObjectURL(newPhoto)}

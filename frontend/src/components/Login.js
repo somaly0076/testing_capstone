@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-import { login } from "../features/auth/authSlice";
+import React, { useState, useEffect } from "react";
+import { login } from "../features/slices/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { FaUser, FaLock } from "react-icons/fa";
+import InputField from "./reusable/InputField";
+import Button from "./reusable/Button";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -10,14 +12,21 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { status, error } = useSelector((state) => state.auth);
+  const { status, error, isAuthenticated } = useSelector((state) => state.auth);
+
+  // Redirect to home if already authenticated
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/home", { replace: true });
+    }
+  }, [isAuthenticated, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const resultAction = await dispatch(login({ email, password }));
 
     if (login.fulfilled.match(resultAction)) {
-      navigate("/home");
+      navigate("/home", { replace: true });
     }
   };
 
@@ -26,28 +35,22 @@ export default function Login() {
       <div className="w-[420px] bg-white shadow-lg rounded-lg p-8">
         <h1 className="text-3xl text-center mb-8 font-bold">Login</h1>
         <form onSubmit={handleSubmit}>
-          <div className="relative mb-8">
-            <input
-              type="text"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="w-full h-12 bg-transparent border-2 border-white/20 rounded-md pl-5 pr-10 text-base placeholder-black"
-            />
-            <FaUser className="absolute right-5 top-1/2 transform -translate-y-1/2 text-xl text-gray-600" />
-          </div>
-          <div className="relative mb-8">
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="w-full h-12 bg-transparent border-2 border-white/20 rounded-md pl-5 pr-10 text-base placeholder-black"
-            />
-            <FaLock className="absolute right-5 top-1/2 transform -translate-y-1/2 text-xl text-gray-600" />
-          </div>
+          <InputField
+            type="text"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            icon={FaUser}
+          />
+          <InputField
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            icon={FaLock}
+          />
           {error && <p className="text-red-500 mb-4">{error}</p>}
           <div className="flex justify-between text-sm mb-4">
             <label className="flex items-center">
@@ -61,13 +64,12 @@ export default function Login() {
               Forgot Password?
             </Link>
           </div>
-          <button
+          <Button
             type="submit"
-            className="w-full h-12 bg-blue-600 text-white rounded-full shadow-md font-bold hover:bg-blue-700"
+            text={status === "loading" ? "Logging in..." : "Login"}
+            variant="primary"
             disabled={status === "loading"}
-          >
-            {status === "loading" ? "Logging in..." : "Login"}
-          </button>
+          />
           <div className="text-center text-sm mt-4">
             <span>Create an account?</span>
             <Link to="/register" className="text-blue-500 ml-1 hover:underline">

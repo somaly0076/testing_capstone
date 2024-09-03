@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
-import { logout } from "../features/auth/authSlice";
+import { logout } from "../features/slices/authSlice";
 
 export default function LogoutButton() {
   const dispatch = useDispatch();

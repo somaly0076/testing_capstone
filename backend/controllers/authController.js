@@ -48,35 +48,53 @@ const createSendToken = (user, statusCode, res) => {
 
 // User signup
 exports.signup = catchAsync(async (req, res, next) => {
-  const { firstName, lastName, userName, email, password, passwordConfirm } =
-    req.body;
-  const userExists = await User.findOne({ where: { email } });
-  if (userExists) {
-    return next(new AppError("Email already exists!", 400));
-  }
+  const {
+    firstName,
+    lastName,
+    userName,
+    email,
+    password,
+    passwordConfirm,
+    formType, // Added formType
+  } = req.body;
 
+  // Check if all required fields are provided
   if (
     !firstName ||
     !lastName ||
     !userName ||
     !email ||
     !password ||
-    !passwordConfirm
+    !passwordConfirm ||
+    !formType
   ) {
     return next(new AppError("Please provide all required fields!", 400));
   }
 
+  // Check if passwords match
   if (password !== passwordConfirm) {
     return next(new AppError("Passwords do not match.", 400));
   }
 
+  // Check if user already exists
+  const userExists = await User.findOne({ where: { email } });
+  if (userExists) {
+    return next(new AppError("Email already exists!", 400));
+  }
+
+  // Determine user role based on formType
+  const role = formType === "business" ? "admin" : "user";
+
+  // Create new user with the appropriate role
   const newUser = await User.create({
     firstName,
     lastName,
     userName,
     email,
     password,
+    role, // Assign the role based on formType
   });
+
   createSendToken(newUser, 201, res);
 });
 

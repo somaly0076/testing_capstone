@@ -3,6 +3,7 @@ import axios from "axios";
 import {
   FORGOT_PASSWORD_URL,
   LOGIN_URL,
+  NODE_ENV,
   REGISTER_URL,
   RESET_PASSWORD_URL,
 } from "../../constants";
@@ -11,7 +12,17 @@ import {
 export const register = createAsyncThunk(
   "auth/register",
   async (
-    { firstName, lastName, userName, email, password, passwordConfirm },
+    {
+      firstName,
+      lastName,
+      userName,
+      email,
+      password,
+      passwordConfirm,
+      formType,
+      businessName,
+      businessAddress,
+    },
     thunkAPI
   ) => {
     try {
@@ -22,6 +33,9 @@ export const register = createAsyncThunk(
         email,
         password,
         passwordConfirm,
+        formType,
+        businessName,
+        businessAddress,
       });
       return "Registration successful. You can now log in.";
     } catch (error) {
@@ -39,9 +53,13 @@ export const login = createAsyncThunk(
         email,
         password,
       });
+      if (NODE_ENV === "development") {
+        console.log(response);
+      }
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("id", response.data.id);
       localStorage.setItem("username", response.data.userName);
+      localStorage.setItem("user", JSON.stringify(response.data));
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue("Failed to log in. Please try again.");
@@ -87,6 +105,7 @@ const authSlice = createSlice({
   initialState: {
     token: localStorage.getItem("token") || null,
     id: localStorage.getItem("id") || null,
+    isAuthenticated: !!localStorage.getItem("token"), // true if token exists
     status: "idle",
     error: null,
     message: null,
@@ -95,8 +114,11 @@ const authSlice = createSlice({
     logout(state) {
       state.token = null;
       state.id = null;
+      state.isAuthenticated = false;
       localStorage.removeItem("token");
       localStorage.removeItem("id");
+      localStorage.removeItem("username");
+      localStorage.removeItem("user");
     },
   },
   extraReducers: (builder) => {
@@ -127,12 +149,14 @@ const authSlice = createSlice({
         state.status = "succeeded";
         state.token = action.payload.token;
         state.id = action.payload.id;
+        state.isAuthenticated = true; // set authenticated state
         state.error = null;
         state.message = "Login successful.";
       })
       .addCase(login.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
+        state.isAuthenticated = false;
         state.message = null;
       })
       // Forgot Password

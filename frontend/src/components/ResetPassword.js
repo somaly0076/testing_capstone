@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Typography, TextField, Button, Container } from "@mui/material";
-import { resetPassword } from "../features/auth/authSlice";
+import InputField from "../components/reusable/InputField";
+import Button from "../components/reusable/Button";
+import { resetPassword } from "../features/slices/authSlice";
 
 export default function ResetPassword() {
   const { token } = useParams();
@@ -26,62 +27,34 @@ export default function ResetPassword() {
 
   return (
     <div className="max-w-md mx-auto p-6 rounded-lg shadow-lg bg-white mt-8">
-      <Typography
-        variant="h4"
-        gutterBottom
-        className="text-center mb-6 font-bold"
-      >
-        Reset Password
-      </Typography>
+      <h1 className="text-3xl font-bold text-center mb-6">Reset Password</h1>
       <form className="flex flex-col" onSubmit={handleSubmit}>
-        <TextField
+        <InputField
           label="New Password"
           type="password"
-          variant="outlined"
-          className="mb-4"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-          fullWidth
+          error={error} 
         />
-        <TextField
+        <InputField
           label="Confirm Password"
           type="password"
-          variant="outlined"
-          className="mb-4"
           value={passwordConfirm}
           onChange={(e) => setPasswordConfirm(e.target.value)}
           required
-          fullWidth
+          error={error} // Optional: Add error if relevant
         />
         <Button
           type="submit"
-          variant="contained"
-          className={`bg-blue-600 text-white rounded-full shadow-md hover:bg-blue-700 ${
-            status === "loading" ? "opacity-50 cursor-not-allowed" : ""
-          }`}
+          text={status === "loading" ? "Resetting..." : "Reset Password"}
+          variant="primary"
           disabled={status === "loading"}
-        >
-          {status === "loading" ? "Resetting..." : "Reset Password"}
-        </Button>
+        />
         {message && (
-          <Typography
-            color="primary"
-            variant="body2"
-            className="mt-4 text-center"
-          >
-            {message}
-          </Typography>
+          <p className="text-green-500 text-center mt-4">{message}</p>
         )}
-        {error && (
-          <Typography
-            color="error"
-            variant="body2"
-            className="mt-4 text-center"
-          >
-            {error}
-          </Typography>
-        )}
+        {error && <p className="text-red-500 text-center mt-4">{error}</p>}
       </form>
     </div>
   );

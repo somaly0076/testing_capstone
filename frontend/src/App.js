@@ -6,6 +6,7 @@ import RegisterPage from "./pages/RegisterPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 import UserProfilePage from "./pages/UserProfilePage";
 import InformationPage from "./pages/InformationPage";
+import CompanyCard from "./components/CompanyCard";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
   {
     path: "/information",
     element: <InformationPage />,
+  },
+  {
+    path: "/cardpage",
+    element: <CompanyCard/>,
   },
 ]);
 

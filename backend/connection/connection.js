@@ -5,8 +5,9 @@ dotenv.config();
 
 // Create a Sequelize instance using the DATABASE_URL environment variable
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
+  host: "localhost",
   dialect: "mysql",
-  logging: false,
+  // logging: false,
 });
 
 // Function to authenticate and sync the database

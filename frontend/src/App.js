@@ -7,6 +7,7 @@ import ResetPasswordPage from "./pages/ResetPasswordPage";
 import UserProfilePage from "./pages/UserProfilePage";
 import InformationPage from "./pages/InformationPage";
 import CompanyCard from "./components/CompanyCard";
+import CompanyDetail from "./pages/CompanyDetail";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,26 @@ const router = createBrowserRouter([
     path: "/cardpage",
     element: <CompanyCard/>,
   },
+  {
+    path: "/companydetail",
+    element: <CompanyDetail/>,
+  },
+  {
+    path : "/scholarships",
+    element :''
+  },
+  {
+    path : "/liveli-hood",
+    element :''
+  },
+  {
+    path : "/about-us",
+    element :''
+  },
+  {
+    path : "/extra-money",
+    element :''
+  }
 ]);
 
 function App() {

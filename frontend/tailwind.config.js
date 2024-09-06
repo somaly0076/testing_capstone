@@ -2,12 +2,12 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {
-      'sm': {'max' : '576px'},
-      // => @media (min-width: 576px) { ... }
-      'lg': {'min' : '1004px'},
-      // => @media (min-width: 1440px) { ... }
+    screens: {
+      'sm': {'max': '980px'}, // Mobile-first approach for max-width
+      'lg': {'min': '1004px'}, // Desktop-first approach for min-width
     },
+    extend: {},
   },
   plugins: [],
 };
+

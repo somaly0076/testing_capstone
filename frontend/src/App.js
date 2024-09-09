@@ -8,6 +8,7 @@ import UserProfilePage from "./pages/UserProfilePage";
 import InformationPage from "./pages/InformationPage";
 import CompanyCard from "./components/CompanyCard";
 import CompanyDetail from "./pages/CompanyDetail";
+import AboutUs from "./pages/AboutUs";
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
   {
     path : "/extra-money",
     element :''
+  },
+  {
+    path: "/about-us",
+    element: <AboutUs/>
   }
 ]);
 

@@ -35,7 +35,7 @@ export default function ResetPassword() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-          error={error} 
+          error={error}
         />
         <InputField
           label="Confirm Password"

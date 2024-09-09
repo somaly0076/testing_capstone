@@ -19,7 +19,7 @@ export const fetchProfile = createAsyncThunk(
     try {
       const response = await axios.get(
         FETCH_PROFILE(userName),
-        headersWithToken()
+        headersWithToken(),
       );
       if (!userName) {
         throw new Error("User Name is required");
@@ -28,7 +28,7 @@ export const fetchProfile = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.response?.data || error.message);
     }
-  }
+  },
 );
 
 // Update profile
@@ -52,7 +52,7 @@ export const updateProfile = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.response?.data || error.message);
     }
-  }
+  },
 );
 
 const userSlice = createSlice({

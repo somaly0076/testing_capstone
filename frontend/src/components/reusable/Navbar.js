@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu ,  X } from "lucide-react";
-import Dashboard from '../../assets/svg/menu.svg'
+import { Menu, X } from "lucide-react";
+import Dashboard from "../../assets/svg/menu.svg";
 const Navbar = () => {
   const token = localStorage.getItem("token");
   const userName = localStorage.getItem("username");
@@ -38,7 +38,7 @@ const Navbar = () => {
         </div>
         <div className="flex items-center space-x-4">
           <button className="p-2 rounded-md  hover:bg-gray-300">
-            <img src={Dashboard}  alt="Dashboard"/>
+            <img src={Dashboard} alt="Dashboard" />
           </button>
           <button className="p-2 rounded-full  hover:bg-gray-300">
             <svg
@@ -66,7 +66,7 @@ const Navbar = () => {
           onClick={toggleMenu}
           className="p-2 rounded-md  hover:bg-gray-300"
         >
-          {isOpen ? <X size={20} /> : <Menu size={20}/>}
+          {isOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 

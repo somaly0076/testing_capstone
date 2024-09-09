@@ -23,7 +23,7 @@ export const register = createAsyncThunk(
       businessName,
       businessAddress,
     },
-    thunkAPI
+    thunkAPI,
   ) => {
     try {
       const response = await axios.post(REGISTER_URL, {
@@ -41,7 +41,7 @@ export const register = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue("Failed to register. Please try again.");
     }
-  }
+  },
 );
 
 // Login thunk
@@ -64,7 +64,7 @@ export const login = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue("Failed to log in. Please try again.");
     }
-  }
+  },
 );
 
 // Forgot Password thunk
@@ -76,10 +76,10 @@ export const forgotPassword = createAsyncThunk(
       return "Password reset email sent.";
     } catch (error) {
       return thunkAPI.rejectWithValue(
-        "Failed to send password reset email. Please try again."
+        "Failed to send password reset email. Please try again.",
       );
     }
-  }
+  },
 );
 
 // Reset Password thunk
@@ -94,10 +94,10 @@ export const resetPassword = createAsyncThunk(
       return "Password reset successful. You can now log in with your new password.";
     } catch (error) {
       return thunkAPI.rejectWithValue(
-        "Failed to reset password. Please try again."
+        "Failed to reset password. Please try again.",
       );
     }
-  }
+  },
 );
 
 const authSlice = createSlice({

@@ -15,7 +15,7 @@ export default function UserProfile() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { profile, loading, error, isEditing, newBio } = useSelector(
-    (state) => state.user
+    (state) => state.user,
   );
   const fileInputRef = useRef(null);
   const [newPhoto, setNewPhoto] = useState(null);

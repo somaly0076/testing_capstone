@@ -46,7 +46,7 @@ export default function Personal() {
         email,
         password,
         passwordConfirm,
-      })
+      }),
     );
   };
 

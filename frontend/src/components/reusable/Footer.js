@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { FaTwitter, FaInstagram, FaFacebookF } from 'react-icons/fa';
+import React from "react";
+import { Link } from "react-router-dom";
+import { FaTwitter, FaInstagram, FaFacebookF } from "react-icons/fa";
 
 const FooterLink = ({ href, children }) => (
   <Link to={href} className="hover:underline">
@@ -21,21 +21,35 @@ const Footer = () => {
         <div className="md:flex md:justify-between">
           {/* Desktop: Left column, Mobile: Top section */}
           <div className="mb-8 md:mb-0">
-            <h2 className="font-bold mb-2 underline"><FooterLink href="/universities">Universities</FooterLink></h2>
-            <h2 className="font-bold mb-2 underline"><FooterLink href="/scholarships">Scholarships</FooterLink></h2>
+            <h2 className="font-bold mb-2 underline">
+              <FooterLink href="/universities">Universities</FooterLink>
+            </h2>
+            <h2 className="font-bold mb-2 underline">
+              <FooterLink href="/scholarships">Scholarships</FooterLink>
+            </h2>
             <div className="mb-4">
-              <h2 className="font-bold mb-2 underline"><FooterLink href="/livelihood">Livelihood</FooterLink></h2>
+              <h2 className="font-bold mb-2 underline">
+                <FooterLink href="/livelihood">Livelihood</FooterLink>
+              </h2>
               <ul className="pl-4 text-sm">
-                <li><FooterLink href="/part-time-job">Part Time Job</FooterLink></li>
-                <li><FooterLink href="/student-loan">Student Loan</FooterLink></li>
-                <li><FooterLink href="/accommodation">Accommodation</FooterLink></li>
+                <li>
+                  <FooterLink href="/part-time-job">Part Time Job</FooterLink>
+                </li>
+                <li>
+                  <FooterLink href="/student-loan">Student Loan</FooterLink>
+                </li>
+                <li>
+                  <FooterLink href="/accommodation">Accommodation</FooterLink>
+                </li>
               </ul>
             </div>
           </div>
 
           {/* Desktop: Middle columns, Mobile: Middle section */}
           <div className="mb-8 md:mb-0">
-            <h2 className="font-bold mb-2 underline"><FooterLink href="/about-us">About Us</FooterLink></h2>
+            <h2 className="font-bold mb-2 underline">
+              <FooterLink href="/about-us">About Us</FooterLink>
+            </h2>
             <ul className="pl-4 text-sm">
               <li className="flex items-center">
                 <span className="mr-2">◎</span>
@@ -50,12 +64,18 @@ const Footer = () => {
 
           {/* Desktop: Right column, Mobile: Bottom section */}
           <div>
-            <h2 className="font-bold mb-2 underline md:hidden"><FooterLink href="/contact-us">Contact Us</FooterLink></h2>
-            <h2 className="font-bold mb-2 underline hidden md:block">Contact Us</h2>
+            <h2 className="font-bold mb-2 underline md:hidden">
+              <FooterLink href="/contact-us">Contact Us</FooterLink>
+            </h2>
+            <h2 className="font-bold mb-2 underline hidden md:block">
+              Contact Us
+            </h2>
             <ul className="text-sm mb-4">
               <li className="flex items-center mb-1">
                 <span className="mr-2">✉</span>
-                <a href="mailto:where2@gmail.com" className="hover:underline">where2@gmail.com</a>
+                <a href="mailto:where2@gmail.com" className="hover:underline">
+                  where2@gmail.com
+                </a>
               </li>
               <li className="flex items-center">
                 <span className="mr-2">◉</span>

@@ -36,7 +36,7 @@ export default function DeleteUserButton() {
     } catch (err) {
       console.error(
         "Error marking profile as inactive:",
-        err.response ? err.response.data : err.message
+        err.response ? err.response.data : err.message,
       );
     }
   };

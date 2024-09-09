@@ -45,28 +45,28 @@ const router = createBrowserRouter([
   },
   {
     path: "/cardpage",
-    element: <CompanyCard/>,
+    element: <CompanyCard />,
   },
   {
     path: "/companydetail",
-    element: <CompanyDetail/>,
+    element: <CompanyDetail />,
   },
   {
-    path : "/scholarships",
-    element :''
+    path: "/scholarships",
+    element: "",
   },
   {
-    path : "/liveli-hood",
-    element :''
+    path: "/liveli-hood",
+    element: "",
   },
   {
-    path : "/extra-money",
-    element :''
+    path: "/extra-money",
+    element: "",
   },
   {
     path: "/about-us",
-    element: <AboutUsPage/>
-  }
+    element: <AboutUsPage />,
+  },
 ]);
 
 function App() {

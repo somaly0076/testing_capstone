@@ -8,7 +8,7 @@ import UserProfilePage from "./pages/UserProfilePage";
 import InformationPage from "./pages/InformationPage";
 import CompanyCard from "./components/CompanyCard";
 import CompanyDetail from "./pages/CompanyDetail";
-
+import Profile from "./components/reusable/Profile";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -65,6 +65,10 @@ const router = createBrowserRouter([
   {
     path : "/extra-money",
     element :''
+  },
+  {
+    path : "/profile",
+    element : <Profile/>
   }
 ]);
 

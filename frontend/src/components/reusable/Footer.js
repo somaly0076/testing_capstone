@@ -16,7 +16,7 @@ const SocialIcon = ({ Icon }) => (
 
 const Footer = () => {
   return (
-    <footer className="bg-[#E6F3F9] text-gray-700 py-8 px-4 w-full bottom-0 mt-[64px]">
+    <footer className="bg-[#E6F3F9] text-gray-700 py-8 px-4 w-full position: relative bottom-0 mt-[64px]">
       <div className="container mx-auto">
         <div className="md:flex md:justify-between">
           {/* Desktop: Left column, Mobile: Top section */}

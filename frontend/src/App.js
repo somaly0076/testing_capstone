@@ -8,7 +8,8 @@ import UserProfilePage from "./pages/UserProfilePage";
 import InformationPage from "./pages/InformationPage";
 import CompanyCard from "./components/CompanyCard";
 import CompanyDetail from "./pages/CompanyDetail";
-import Profile from "./components/reusable/Profile";
+import ScholarshipListPage from "./pages/ScholarshipListPage";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -52,7 +53,7 @@ const router = createBrowserRouter([
   },
   {
     path : "/scholarships",
-    element :''
+    element : <ScholarshipListPage/>
   },
   {
     path : "/liveli-hood",

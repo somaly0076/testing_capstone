@@ -24,5 +24,4 @@ location : "Phnom Penh, Cambodia",
 deadLine : "10/10/2022",
 timeOut : "10:00 AM"
 },
-
 ]

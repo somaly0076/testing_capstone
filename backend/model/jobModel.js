@@ -1,5 +1,6 @@
 const { DataTypes, Op } = require('sequelize');
-const sequelize = require('../connection/connection')
+const sequelize = require("../connection/connection")
+
 
 const Job = sequelize.define("job",{
     id: {
@@ -14,7 +15,7 @@ const Job = sequelize.define("job",{
         type: DataTypes.STRING
     },
     job_require: {
-        type:DataTypes.INTEGER
+        type:DataTypes.STRING
     },
     location: {
         type: DataTypes.STRING
@@ -29,11 +30,12 @@ const Job = sequelize.define("job",{
         type: DataTypes.DATE
     }
 })
-Job.sync().then(data => {
-    console.log("Database & tables created for Job table!");
-}).catch ((err) => {
-    console.error("Error creating database tables for job table:", error);
-    })
+// Sync models and handle errors
+Job.sequelize.sync().then((req) => {
+    console.log("Database & JOB tables created!")
+}).catch(err => {
+    console.log(err)
+})
 
 
 module.exports = Job;

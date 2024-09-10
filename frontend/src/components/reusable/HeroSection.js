@@ -20,7 +20,7 @@ const HeroSection = ({
   };
 
   return (
-    <section className="relative w-full sm:h-[517px] lg:h-[859px] z-[0]">
+    <section className="relative w-full sm:h-[517px] lg:h-[859px] z-[0] gap-5">
       <div className="relative w-full h-full bg-white text-center">
         <div 
           className={`inset-0 bg-gradient-to-b ${backgroundGradient} opacity-50`} 

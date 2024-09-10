@@ -32,22 +32,12 @@ export default function Home() {
 
   return (
     <React.Fragment>
-      {/* <h1>Welcome to the Home Page</h1>
-      {token ? (
-        userName ? (
-          <Link to={`/profile/${userName}`}>
-            <FaUser />
-          </Link>
-        ) : (
-          <p>No username available</p>
-        )
-      ) : (
-        <p>No token
-         available</p>
-      )} */}
         <HeroSection/>
-      <div className="w-full overflow-y-scroll">
-      <div className="w-fit flex ">
+      <div className="w-full overflow-scroll flex">
+      <div className="w-fit flex cursor-grab gap-5">
+      <HomePageCard variant={"large"} cardItems={cardItems}/>
+      <HomePageCard variant={"large"} cardItems={cardItems}/>
+      <HomePageCard variant={"large"} cardItems={cardItems}/>
       <HomePageCard variant={"large"} cardItems={cardItems}/>
       <HomePageCard variant={"large"} cardItems={cardItems}/>
       <HomePageCard variant={"large"} cardItems={cardItems}/>

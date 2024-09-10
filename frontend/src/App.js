@@ -9,6 +9,8 @@ import InformationPage from "./pages/InformationPage";
 import CompanyCard from "./components/CompanyCard";
 import CompanyDetail from "./pages/CompanyDetail";
 import Profile from "./components/reusable/Profile";
+import AdminPanel from "./pages/Admin/AdminPanel";
+import ErrorMessage from "./components/ErorrMessage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -69,6 +71,14 @@ const router = createBrowserRouter([
   {
     path : "/profile",
     element : <Profile/>
+  },
+  {
+    path : "/admin-content",
+    element : <AdminPanel/>
+  },
+  {
+    path: "/error",
+    element: <ErrorMessage/>,
   }
 ]);
 

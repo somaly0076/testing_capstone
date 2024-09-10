@@ -1,5 +1,5 @@
 const express = require('express');
-const { getAllJobs, addJob, deleteJob } = require('../controllers/jobController');
+const { getAllJobs, addJob, deleteJob, updateJob } = require('../controllers/jobController');
 const router = express.Router()
 
 router
@@ -13,6 +13,10 @@ router
 router
     .route('/deleteJob')
     .delete(deleteJob);
+
+router
+    .route('/updateJob/:id')
+    .patch(updateJob)
 
 
 

@@ -43,14 +43,21 @@ console.log(company_id,position,deadline)
         data: {
             newJob
         }
-        
     })
     next()
    
 })
 
-const updateJob = catchAsync(async (req, res, next) => {
-    
+exports.updateJob = catchAsync(async (req, res, next) => {
+    const id = req.params.id;
+    const updated = await Job.update(req.body, { where: { id: id } });
+    res.status(200).json({
+        status: "updated successfully",
+        data: {
+            updated
+        }
+    });
+    next()
 })
 
 exports.deleteJob = catchAsync(async (req, res, next) => {

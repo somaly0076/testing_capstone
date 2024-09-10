@@ -50,28 +50,28 @@ const UserProfile = () => {
       <div className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Entity</label>
-          <input type="text" value="University" className="p-2 rounded-[20px] shadow-md  w-full max-w-[300px]" readOnly />
+          <input type="text" value="University" className="p-2 rounded-[20px] border-[1px] border-black w-full max-w-[300px]" readOnly />
         </div>
         
         <div className="flex sm:flex-col gap-4">
           <div className="flex-1">
             <label className="block text-sm font-medium text-gray-700 mb-1">First Name</label>
-            <input type="text" placeholder="First Name" className="p-2 rounded-[20px] shadow-md  w-full max-w-[300px]" />
+            <input type="text" placeholder="First Name" className="p-2 rounded-[20px] border-[1px] border-black w-full max-w-[300px]" />
           </div>
           <div className="flex-1">
             <label className="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
-            <input type="text" placeholder="Last Name" className="p-2 rounded-[20px] shadow-md  w-full max-w-[300px]" />
+            <input type="text" placeholder="Last Name" className="p-2 rounded-[20px] border-[1px] border-black w-full max-w-[300px]" />
           </div>
         </div>
         
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Location</label>
-          <input type="text" value="Street#12, SenSok, Phnom Penh" className="p-2 rounded-[20px] shadow-md  w-full max-w-[300px]" />
+          <input type="text" value="Street#12, SenSok, Phnom Penh" className="p-2 rounded-[20px] border-[1px] border-black w-full max-w-[300px]" />
         </div>
         
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-          <input type="email" value="Example@gmail.com" className="p-2 rounded-[20px] shadow-md  w-full max-w-[300px]" readOnly />
+          <input type="email" value="Example@gmail.com" className="p-2 rounded-[20px] border-[1px] border-black w-full max-w-[300px]" readOnly />
         </div>
         
         <div>
@@ -80,15 +80,9 @@ const UserProfile = () => {
             <input 
               type={showPassword ? "text" : "password"} 
               value="••••••••••" 
-              className="p-2 rounded-[20px] shadow-md  w-full max-w-[300px] pr-10" 
+              className="p-2 rounded-[20px] border-[1px] border-black w-full max-w-[300px] pr-10" 
               readOnly 
             />
-            <button 
-              onClick={() => setShowPassword(!showPassword)} 
-              className="absolute inset-y-0 sm:left-[180px] left-[270px] pr-3 flex items-center"
-            >
-              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-            </button>
           </div>
         </div>
         

@@ -23,7 +23,7 @@ const Navbar = () => {
       <nav className="bg-gray-100 h-[64px] fixed top-0 left-0 right-0 z-[1002]">
         {/* Desktop Navbar */}
         <div className="flex justify-between items-center px-4 py-3 h-full sm:hidden">
-          <div className="text-xl font-bold">WHERE2</div>
+          <Link to={'/'} className="text-xl font-bold">WHERE2</Link>
           <div className="flex space-x-4 sm:hidden">
             {menuItems.map((item) => (
               <Link key={item.name} to={item.to} className="text-gray-700 hover:text-gray-900">
@@ -45,8 +45,8 @@ const Navbar = () => {
 
         {/* Mobile Navbar */}
         <div className="sm:flex lg:hidden justify-between items-center px-4 py-3 h-full">
-          <div className="text-xl font-bold">WHERE2</div>
-          <button onClick={toggleMenu} className="p-2 rounded-md hover:bg-gray-300">
+          <Link to={'/'} className="text-xl font-bold">WHERE2</Link>
+          <button onClick={toggleMenu} className="p-2  rounded-md hover:bg-gray-300">
             {isOpen ? <X size={20} /> : <Menu size={20}/>}
           </button>
         </div>

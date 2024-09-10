@@ -9,10 +9,15 @@ import InformationPage from "./pages/InformationPage";
 import CompanyCard from "./components/CompanyCard";
 import CompanyDetail from "./pages/CompanyDetail";
 import Profile from "./components/reusable/Profile";
+<<<<<<< HEAD
 import ContactCard from "./components/reusable/ContactCard";
 import JobCardPage from "./pages/JobCardPage";
 import JobDetailPage from "./pages/JobDetailPage";
 
+=======
+import AdminPanel from "./pages/Admin/AdminPanel";
+import ErrorMessage from "./components/ErorrMessage";
+>>>>>>> 5790adb (admin panel , profile page)
 const router = createBrowserRouter([
   {
     path: "/",
@@ -79,12 +84,21 @@ const router = createBrowserRouter([
     element : <Profile/>
   },
   {
+<<<<<<< HEAD
     path: "/contactcard",
     element: <ContactCard/>
   },
   {
     path: "/jobdetail",
     element: <JobDetailPage/>
+=======
+    path : "/admin-content",
+    element : <AdminPanel/>
+  },
+  {
+    path: "/error",
+    element: <ErrorMessage/>,
+>>>>>>> 5790adb (admin panel , profile page)
   }
 ]);
 

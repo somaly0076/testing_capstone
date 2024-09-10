@@ -10,11 +10,21 @@ const hpp = require("hpp");
 const AppError = require("./utils/appError");
 const globalErrorHandler = require("./controllers/errorController");
 const userRouter = require("./routes/userRoutes.js");
+<<<<<<< HEAD
 const jobRouter = require("./routes/jobRoutes.js");
 const companyRouter = require("./routes/companyRoutes.js")
 const studentLoanRouter = require("./routes/studentLoanRoutes.js")
 const app = express();
 
+=======
+const jobRouter = require("./routes/jobRoutes.js")
+// const db = require("./model/jobModel.js");
+const app = express();
+
+<<<<<<< HEAD
+// Security middleware
+=======
+>>>>>>> 9ba37e0 (added the model, controller and route)
 
 app.use(
   cors({
@@ -22,6 +32,10 @@ app.use(
     allowedHeaders: ["Authorization", "Content-Type"],
   })
 );
+<<<<<<< HEAD
+=======
+>>>>>>> f92ce5a (added the model, controller and route)
+>>>>>>> 9ba37e0 (added the model, controller and route)
 app.use(helmet());
 app.use(compress());
 
@@ -54,7 +68,10 @@ app.use((req, res, next) => {
 
 app.use("/api/users", userRouter);
 app.use("/api/jobs", jobRouter);
+<<<<<<< HEAD
 app.use("/api/companies", companyRouter);
 app.use("/api/studentloans",studentLoanRouter)
+=======
+>>>>>>> 9ba37e0 (added the model, controller and route)
 
 module.exports = app;

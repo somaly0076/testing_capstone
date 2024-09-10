@@ -1,9 +1,15 @@
 const { where } = require("sequelize");
 const catchAsync = require("../utils/catchAsync");
 const Job = require("./../model/jobModel");
+<<<<<<< HEAD
 const Company = require("./../model/companyModel")
 exports.getAllJobs = catchAsync(async (req, res,next) => {
     const jobs = await Job.findAll({include:Company});
+=======
+
+exports.getAllJobs = catchAsync(async (req, res,next) => {
+    const jobs = await Job.findAll();
+>>>>>>> 9ba37e0 (added the model, controller and route)
     res.status(200).json({
         status: 'success',
         amount: jobs.length,
@@ -43,11 +49,16 @@ console.log(company_id,position,deadline)
         data: {
             newJob
         }
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 9ba37e0 (added the model, controller and route)
     })
     next()
    
 })
 
+<<<<<<< HEAD
 exports.updateJob = catchAsync(async (req, res, next) => {
     const id = req.params.id;
     const updated = await Job.update(req.body, { where: { id: id } });
@@ -63,6 +74,14 @@ exports.updateJob = catchAsync(async (req, res, next) => {
 
 exports.deleteJob = catchAsync(async (req, res, next) => {
     const { id }  = req.params;
+=======
+const updateJob = catchAsync(async (req, res, next) => {
+    
+})
+
+exports.deleteJob = catchAsync(async (req, res, next) => {
+    const id  = req.body.id;
+>>>>>>> 9ba37e0 (added the model, controller and route)
     await Job.destroy({
         where: { id:id },
     });
@@ -75,6 +94,7 @@ exports.deleteJob = catchAsync(async (req, res, next) => {
         }
     })
     next()
+<<<<<<< HEAD
 });
 exports.getAssociateCompany = catchAsync(async (req, res) => {
     const associatedJob = await Job.findAll();
@@ -85,3 +105,6 @@ exports.getAssociateCompany = catchAsync(async (req, res) => {
         }
     })
 })
+=======
+});
+>>>>>>> 9ba37e0 (added the model, controller and route)

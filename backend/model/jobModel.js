@@ -1,6 +1,10 @@
 const { DataTypes, Op } = require('sequelize');
 const sequelize = require("../connection/connection")
+<<<<<<< HEAD
 const Company = require("../model/companyModel")
+=======
+
+>>>>>>> 9ba37e0 (added the model, controller and route)
 
 const Job = sequelize.define("job",{
     id: {
@@ -29,6 +33,7 @@ const Job = sequelize.define("job",{
     deadline: {
         type: DataTypes.DATEONLY
     }
+<<<<<<< HEAD
 },{timestamps:false})
 // Sync models and handle errors
 Job.sync({ alter: true }).then((req) => {
@@ -42,6 +47,15 @@ Company.hasMany(Job, { foreignKey: 'company_id' })
 //     // Job.hasMany(Company)
 //     Job.belongsTo(Company,{foreignKey:'id'})
 // }
+=======
+})
+// Sync models and handle errors
+Job.sequelize.sync().then((req) => {
+    console.log("Database & JOB tables created!")
+}).catch(err => {
+    console.log(err)
+})
+>>>>>>> 9ba37e0 (added the model, controller and route)
 
 
 module.exports = Job;

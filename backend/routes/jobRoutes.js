@@ -11,7 +11,7 @@ router
     .post(addJob)
 
 router
-    .route('/deleteJob')
+    .route('/deleteJob/:id')
     .delete(deleteJob);
 
 router

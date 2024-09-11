@@ -10,8 +10,9 @@ const hpp = require("hpp");
 const AppError = require("./utils/appError");
 const globalErrorHandler = require("./controllers/errorController");
 const userRouter = require("./routes/userRoutes.js");
-const jobRouter = require("./routes/jobRoutes.js")
-// const db = require("./model/jobModel.js");
+const jobRouter = require("./routes/jobRoutes.js");
+const companyRouter = require("./routes/companyRoutes.js")
+
 const app = express();
 
 
@@ -53,5 +54,6 @@ app.use((req, res, next) => {
 
 app.use("/api/users", userRouter);
 app.use("/api/jobs", jobRouter);
+app.use("/api/companies", companyRouter);
 
 module.exports = app;

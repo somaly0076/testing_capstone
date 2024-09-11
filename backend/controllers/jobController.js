@@ -51,6 +51,7 @@ console.log(company_id,position,deadline)
 exports.updateJob = catchAsync(async (req, res, next) => {
     const id = req.params.id;
     const updated = await Job.update(req.body, { where: { id: id } });
+    console.log('ID Updated:', id)
     res.status(200).json({
         status: "updated successfully",
         data: {
@@ -61,7 +62,7 @@ exports.updateJob = catchAsync(async (req, res, next) => {
 })
 
 exports.deleteJob = catchAsync(async (req, res, next) => {
-    const id  = req.body.id;
+    const { id }  = req.params;
     await Job.destroy({
         where: { id:id },
     });

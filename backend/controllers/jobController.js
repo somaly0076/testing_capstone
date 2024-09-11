@@ -74,6 +74,7 @@ exports.updateJob = catchAsync(async (req, res, next) => {
 
 exports.deleteJob = catchAsync(async (req, res, next) => {
     const { id }  = req.params;
+<<<<<<< HEAD
 =======
 const updateJob = catchAsync(async (req, res, next) => {
     
@@ -82,6 +83,8 @@ const updateJob = catchAsync(async (req, res, next) => {
 exports.deleteJob = catchAsync(async (req, res, next) => {
     const id  = req.body.id;
 >>>>>>> 9ba37e0 (added the model, controller and route)
+=======
+>>>>>>> 538213a (added controller, route and model for company)
     await Job.destroy({
         where: { id:id },
     });

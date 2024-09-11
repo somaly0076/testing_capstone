@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 const DataTypes = require('sequelize');
 const sequelize = require('../connection/connection');
 const Job = require('./jobModel')
+=======
+const sequelize = require('../connection/connection');
+const DataTypes = require('sequelize');
+>>>>>>> 538213a (added controller, route and model for company)
 
 const Company = sequelize.define("company", {
     company_id: {
@@ -32,6 +37,7 @@ const Company = sequelize.define("company", {
 },
     { timestamps: false })
 
+<<<<<<< HEAD
 Company.sync({ alter: true }).then(() => {
     console.log('Company Table is created!!')
 });
@@ -43,5 +49,10 @@ Company.associate = function () {
     Job.belongsTo(Company,{foreignKey:'company_id'})
 }
 
+=======
+Company.sequelize.sync().then(() => {
+    console.log('Company Table is created!!')
+})
+>>>>>>> 538213a (added controller, route and model for company)
 
 module.exports = Company;

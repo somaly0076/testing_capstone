@@ -11,6 +11,7 @@ const AppError = require("./utils/appError");
 const globalErrorHandler = require("./controllers/errorController");
 const userRouter = require("./routes/userRoutes.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 const jobRouter = require("./routes/jobRoutes.js");
 const companyRouter = require("./routes/companyRoutes.js")
 const studentLoanRouter = require("./routes/studentLoanRoutes.js")
@@ -19,6 +20,11 @@ const app = express();
 =======
 const jobRouter = require("./routes/jobRoutes.js")
 // const db = require("./model/jobModel.js");
+=======
+const jobRouter = require("./routes/jobRoutes.js");
+const companyRouter = require("./routes/companyRoutes.js")
+
+>>>>>>> 538213a (added controller, route and model for company)
 const app = express();
 
 <<<<<<< HEAD
@@ -69,9 +75,13 @@ app.use((req, res, next) => {
 app.use("/api/users", userRouter);
 app.use("/api/jobs", jobRouter);
 <<<<<<< HEAD
+<<<<<<< HEAD
 app.use("/api/companies", companyRouter);
 app.use("/api/studentloans",studentLoanRouter)
 =======
 >>>>>>> 9ba37e0 (added the model, controller and route)
+=======
+app.use("/api/companies", companyRouter);
+>>>>>>> 538213a (added controller, route and model for company)
 
 module.exports = app;

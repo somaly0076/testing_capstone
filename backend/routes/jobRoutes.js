@@ -16,6 +16,9 @@ router
 
 router
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 538213a (added controller, route and model for company)
     .route('/deleteJob/:id')
     .delete(deleteJob);
 

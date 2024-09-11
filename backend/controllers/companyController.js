@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 const { where, Model } = require("sequelize");
 const catchAsync = require("../utils/catchAsync");
 const Company = require("./../model/companyModel")
 const Job = require('./../model/jobModel')
+=======
+const { where } = require("sequelize");
+const catchAsync = require("../utils/catchAsync");
+const Company = require("./../model/companyModel")
+>>>>>>> 538213a (added controller, route and model for company)
 
 exports.getAllCompany = catchAsync(async (req, res, next) => {
     const companies = await Company.findAll();
@@ -75,6 +81,7 @@ exports.deleteCompany = catchAsync(async (req, res, next) => {
     })
 });
 
+<<<<<<< HEAD
 exports.getAssociateJob = catchAsync(async (req, res) => {
     const associatedJob = await Company.findAll({
         include:Job
@@ -87,4 +94,6 @@ exports.getAssociateJob = catchAsync(async (req, res) => {
     })
 })
 
+=======
+>>>>>>> 538213a (added controller, route and model for company)
 

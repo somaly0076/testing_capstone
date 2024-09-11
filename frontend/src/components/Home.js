@@ -33,8 +33,19 @@ export default function Home() {
   return (
     <React.Fragment>
         <HeroSection/>
-      <div className="w-full overflow-scroll flex">
-      <div className="w-fit flex cursor-grab gap-5">
+      <div className="w-full overflow-scroll flex flex-col justify-between">
+      <div className="w-fit flex gap-5">
+      <HomePageCard variant={"small"} cardItems={cardItems}/>
+      <HomePageCard variant={"small"} cardItems={cardItems}/>
+      <HomePageCard variant={"small"} cardItems={cardItems}/>
+      <HomePageCard variant={"small"} cardItems={cardItems}/>
+      <HomePageCard variant={"small"} cardItems={cardItems}/>
+      <HomePageCard variant={"small"} cardItems={cardItems}/>
+      </div>
+
+      </div>
+      <div className="w-full overflow-scroll flex flex-col justify-between">
+      <div className="w-fit flex gap-5">
       <HomePageCard variant={"large"} cardItems={cardItems}/>
       <HomePageCard variant={"large"} cardItems={cardItems}/>
       <HomePageCard variant={"large"} cardItems={cardItems}/>

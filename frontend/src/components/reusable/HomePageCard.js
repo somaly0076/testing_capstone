@@ -27,28 +27,44 @@ const HomePageCard = ({ cardItems, variant = 'large', className = '' }) => {
   const cardClasses = `${baseStyle} ${variants[variant]} ${className}`.trim();
 
   return (
-    <div className={cardClasses}>
+    <div >
       {variant === 'small' ? ( 
         <>
-          <TextDiv />
-          <div className='w-full h-full'>
-            <img 
-              className={imageClasses}
-              src={cardItems.image} 
-              alt={cardItems.title || 'Card image'}
-              draggable={false}
-            />
-          </div>
+<div class="relative flex flex-col mt-6 text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-96">
+<div class="p-6">
+    <div
+      class="block w-56 h-3 mb-4 font-sans text-5xl antialiased font-semibold leading-tight tracking-normal bg-gray-300 rounded-full text-inherit">
+      &nbsp;
+    </div>
+    <div
+      class="block w-full h-2 mb-2 font-sans text-base antialiased font-light leading-relaxed bg-gray-300 rounded-full text-inherit">
+      &nbsp;
+    </div>
+  </div>
+  <div
+    class="relative grid h-56 mt-4 overflow-hidden text-gray-700 bg-gray-300 bg-clip-border rounded-xl place-items-center">
+    <img src={cardItems.image} className='object-cover'/>
+  </div>
+</div>
         </>
       ) : (
         <>
-          <TextDiv />
-          <div 
-            className={`relative w-full flex-grow bg-cover bg-center rounded-b-[14px] hover:contrast-[0.5] hover:text-white `}
-            style={{ backgroundImage: `url(${cardItems.image})`}}
-            >
-            <h1 className='absolute top-[50%] left-[25%]'>FIND  YOUR JOB</h1>
-            </div>
+<div class="relative flex flex-col mt-6 text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-96 hover:opacity-25 hover:animate-pulse">
+  <div
+    class="relative grid h-56 mx-4 mt-4 overflow-hidden text-gray-700 bg-gray-300 bg-clip-border rounded-xl place-items-center">
+    <img src={cardItems.image} className='object-cover'/>
+  </div>
+  <div class="p-6">
+    <div
+      class="block w-56 h-3 mb-4 font-sans text-5xl antialiased font-semibold leading-tight tracking-normal bg-gray-300 rounded-full text-inherit">
+      &nbsp;
+    </div>
+    <div
+      class="block w-full h-2 mb-2 font-sans text-base antialiased font-light leading-relaxed bg-gray-300 rounded-full text-inherit">
+      &nbsp;
+    </div>
+  </div>
+</div>
         </>
       )}
     </div>

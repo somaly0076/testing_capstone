@@ -23,7 +23,14 @@ import ErrorMessage from "./components/ErorrMessage";
 import UserProfile from "./components/UserProfile";
 import { ThemeProvider } from "@material-tailwind/react"; // Material Tailwind's ThemeProvider
 
+<<<<<<< HEAD
 >>>>>>> d00356b (fixed navigation bar , sidebar, footer)
+=======
+import ContactCard from "./components/reusable/ContactCard";
+import JobCardPage from "./pages/JobCardPage";
+import JobDetailPage from "./pages/JobDetailPage";
+
+>>>>>>> a5722ba (render jobCard and company profile)
 const router = createBrowserRouter([
   {
     path: "/",
@@ -66,8 +73,16 @@ const router = createBrowserRouter([
     element: <CompanyDetail />,
   },
   {
-    path: "/profile",
-    element: <UserProfile />,
+    path : "/scholarships",
+    element :''
+  },
+  {
+    path : "/liveli-hood",
+    element :''
+  },
+  {
+    path: "/jobpage",
+    element: <JobCardPage/>,
   },
   {
 <<<<<<< HEAD
@@ -119,7 +134,20 @@ const router = createBrowserRouter([
     path : "/profile",
     element : <UserProfile/>
   },
+<<<<<<< HEAD
 >>>>>>> d00356b (fixed navigation bar , sidebar, footer)
+=======
+    element : <Profile/>
+  },
+  {
+    path: "/contactcard",
+    element: <ContactCard/>
+  },
+  {
+    path: "/jobdetail",
+    element: <JobDetailPage/>
+  }
+>>>>>>> a5722ba (render jobCard and company profile)
 ]);
 
 function App() {

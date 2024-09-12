@@ -23,7 +23,7 @@ const Card = ({ image, imageAlt, title, description, facebookLink, instagramLink
     const companyUrl = title.toLowerCase().replace(/\s+/g, '-');
     const workDetails = [
         { icon: MiniClock, linkKey: timeOut },
-        { icon: Calender, linkKey: deadLine },
+        { icon: Calender, linkKey: deadLine.toLocaleString() },
         { icon: MiniMap, linkKey: location },
     ]
 
@@ -54,7 +54,7 @@ const Card = ({ image, imageAlt, title, description, facebookLink, instagramLink
                         <div className="social flex py-6 justify-around max-w-[200px]">
                             {socialMediaIcons.map(({ icon: Icon, linkKey, isExternal }, index) => {
                                 if (NODE_ENV === 'development') {
-                                    console.log(linkKey)
+                                    // console.log(linkKey)
                                 }
                                 return linkKey ? (
                                     isExternal ? (

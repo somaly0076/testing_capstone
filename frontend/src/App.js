@@ -9,6 +9,10 @@ import InformationPage from "./pages/InformationPage";
 import CompanyCard from "./components/CompanyCard";
 import CompanyDetail from "./pages/CompanyDetail";
 import Profile from "./components/reusable/Profile";
+import ContactCard from "./components/reusable/ContactCard";
+import JobCardPage from "./pages/JobCardPage";
+import JobDetailPage from "./pages/JobDetailPage";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -59,6 +63,10 @@ const router = createBrowserRouter([
     element :''
   },
   {
+    path: "/jobpage",
+    element: <JobCardPage/>,
+  },
+  {
     path : "/about-us",
     element :''
   },
@@ -69,6 +77,14 @@ const router = createBrowserRouter([
   {
     path : "/profile",
     element : <Profile/>
+  },
+  {
+    path: "/contactcard",
+    element: <ContactCard/>
+  },
+  {
+    path: "/jobdetail",
+    element: <JobDetailPage/>
   }
 ]);
 

@@ -27,11 +27,11 @@ const Job = sequelize.define("job",{
         type: DataTypes.STRING
     },
     deadline: {
-        type: DataTypes.DATE
+        type: DataTypes.DATEONLY
     }
 })
 // Sync models and handle errors
-Job.sequelize.sync().then((req) => {
+Job.sequelize.sync({ alter: true }).then((req) => {
     console.log("Database & JOB tables created!")
 }).catch(err => {
     console.log(err)

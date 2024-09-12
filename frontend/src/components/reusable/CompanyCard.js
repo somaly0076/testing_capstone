@@ -79,7 +79,7 @@ const Card = ({ image, imageAlt, title, description, facebookLink, instagramLink
                                 </Link>
                             </div>
 
-                            <Link to={`/company/companydetail/:company`} className="text-blue-500 hover:underline">
+                            <Link to={`/company/companydetail/${companyUrl}` } className="text-blue-500 hover:underline">
                                 <Button className="font- text-1xl p-2 px-3" variant="primary" size="large">
                                     Read More
                                 </Button>

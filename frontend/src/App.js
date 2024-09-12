@@ -9,7 +9,7 @@ import InformationPage from "./pages/InformationPage";
 import CompanyCard from "./components/CompanyCard";
 import CompanyDetail from "./pages/CompanyDetail";
 import ScholarshipListPage from "./pages/ScholarshipListPage";
-
+import ScholarDetailPage from "./pages/ScolarshipsDetailPage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -54,6 +54,10 @@ const router = createBrowserRouter([
   {
     path : "/scholarships",
     element : <ScholarshipListPage/>
+  },
+  {
+    path : "/scholarshipdetail",
+    element : <ScholarDetailPage/>
   },
   {
     path : "/liveli-hood",

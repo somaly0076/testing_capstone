@@ -3,7 +3,6 @@ const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
 const sequelize = require("../connection/connection");
 const validator = require("validator");
-const { type } = require("os");
 
 const User = sequelize.define(
   "User",
@@ -69,7 +68,7 @@ const User = sequelize.define(
     },
     role: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       defaultValue: "user",
       validate: {
         isIn: [["user", "admin", "developer"]],
@@ -166,7 +165,6 @@ const User = sequelize.define(
 User.prototype.correctPassword = async function (candidatePassword) {
   return await bcrypt.compare(candidatePassword, this.password);
 };
-
 User.prototype.changedPasswordAfter = function (JWTTimestamp) {
   if (this.passwordChangedAt) {
     const changedTimestamp = parseInt(

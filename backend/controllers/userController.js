@@ -35,7 +35,7 @@ exports.getAllUsers = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.getUserProfile = async (req, res) => {
+exports.getUserProfile = async (req , res) => {
   try {
     const { username } = req.params; // Extract the username from the route parameter
 

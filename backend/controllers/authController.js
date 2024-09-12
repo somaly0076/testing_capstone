@@ -55,8 +55,11 @@ exports.signup = catchAsync(async (req, res, next) => {
     email,
     password,
     passwordConfirm,
-    formType, // Added formType
+    formType,
   } = req.body;
+
+  if (process.env.NODE_ENV !== 'production') {
+  console.log(firstName, lastName, userName, email, password, passwordConfirm)}
 
   // Check if all required fields are provided
   if (
@@ -65,8 +68,7 @@ exports.signup = catchAsync(async (req, res, next) => {
     !userName ||
     !email ||
     !password ||
-    !passwordConfirm ||
-    !formType
+    !passwordConfirm
   ) {
     return next(new AppError("Please provide all required fields!", 400));
   }

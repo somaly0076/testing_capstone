@@ -31,7 +31,7 @@ const Card = ({ image, imageAlt, title, description, facebookLink, instagramLink
         <div className="lg:h-[348px] lg:w-[676px] mx-auto mb-[64px]">
             <div className={`${cardBody} justify-center `}>
                 <div className="h-[300px] rounded-xl">
-                    <img className="min-w-full max-h-full object-fit " src={image} alt={imageAlt || title} />
+                    <img className="min-w-full max-h-full object-contain h-[inherit]" src={image} alt={imageAlt || title} />
                 </div>
                 <div>
                     <div className="p-6 pb-0 w-[376px]">

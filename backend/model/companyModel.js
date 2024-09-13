@@ -31,7 +31,7 @@ const Company = sequelize.define("company", {
 },
     { timestamps: false })
 
-Company.sequelize.sync().then(() => {
+Company.sync({alter:true}).then(() => {
     console.log('Company Table is created!!')
 })
 

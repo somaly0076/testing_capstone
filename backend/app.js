@@ -12,7 +12,7 @@ const globalErrorHandler = require("./controllers/errorController");
 const userRouter = require("./routes/userRoutes.js");
 const jobRouter = require("./routes/jobRoutes.js");
 const companyRouter = require("./routes/companyRoutes.js")
-
+const studentLoanRouter = require("./routes/studentLoanRoutes.js")
 const app = express();
 
 
@@ -55,5 +55,6 @@ app.use((req, res, next) => {
 app.use("/api/users", userRouter);
 app.use("/api/jobs", jobRouter);
 app.use("/api/companies", companyRouter);
+app.use("/api/studentloans",studentLoanRouter)
 
 module.exports = app;

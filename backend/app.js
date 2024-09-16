@@ -23,8 +23,12 @@ const jobRouter = require("./routes/jobRoutes.js")
 =======
 const jobRouter = require("./routes/jobRoutes.js");
 const companyRouter = require("./routes/companyRoutes.js")
+<<<<<<< HEAD
 
 >>>>>>> 538213a (added controller, route and model for company)
+=======
+const studentLoanRouter = require("./routes/studentLoanRoutes.js")
+>>>>>>> f3b81ce (added studentLoanModel)
 const app = express();
 
 <<<<<<< HEAD
@@ -78,10 +82,13 @@ app.use("/api/jobs", jobRouter);
 <<<<<<< HEAD
 app.use("/api/companies", companyRouter);
 app.use("/api/studentloans",studentLoanRouter)
+<<<<<<< HEAD
 =======
 >>>>>>> 9ba37e0 (added the model, controller and route)
 =======
 app.use("/api/companies", companyRouter);
 >>>>>>> 538213a (added controller, route and model for company)
+=======
+>>>>>>> f3b81ce (added studentLoanModel)
 
 module.exports = app;

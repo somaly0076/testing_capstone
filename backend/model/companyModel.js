@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 const DataTypes = require('sequelize');
 const sequelize = require('../connection/connection');
 const Job = require('./jobModel')
@@ -6,6 +7,11 @@ const Job = require('./jobModel')
 const sequelize = require('../connection/connection');
 const DataTypes = require('sequelize');
 >>>>>>> 538213a (added controller, route and model for company)
+=======
+const DataTypes = require('sequelize');
+const sequelize = require('../connection/connection');
+
+>>>>>>> f3b81ce (added studentLoanModel)
 
 const Company = sequelize.define("company", {
     company_id: {

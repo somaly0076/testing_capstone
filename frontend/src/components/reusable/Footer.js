@@ -16,7 +16,13 @@ const SocialIcon = ({ Icon }) => (
 
 const Footer = () => {
   return (
+<<<<<<< HEAD
     <footer className="bg-[#E6F3F9] text-gray-700 py-8 px-4 w-full bottom-0 mt-[64px]">
+=======
+    <footer className="bg-[#E6F3F9] text-gray-700 py-8 px-4 w-full mt-[64px] bottom-0">
+      <section className="flex">
+
+>>>>>>> d00356b (fixed navigation bar , sidebar, footer)
       <div className="container mx-auto">
         <div className="md:flex md:justify-between">
           {/* Desktop: Left column, Mobile: Top section */}
@@ -62,6 +68,7 @@ const Footer = () => {
                 <span>Phnom Penh</span>
               </li>
             </ul>
+<<<<<<< HEAD
             <div className="md:hidden">
               <h2 className="font-bold mb-2">Our Social</h2>
               <div className="flex space-x-2">
@@ -74,8 +81,21 @@ const Footer = () => {
 
           {/* Desktop: Social icons column */}
           <div className="hidden md:block">
+=======
+            <div className="md:hidden"></div>
+          </div>
+          <div className="sm:flex lg:hidden sm:flex-row space-x-2 flex-col gap-5">
+            <h2 className="sm:hidden font-bold mb-2">Our Social</h2>
+            <SocialIcon Icon={FaTwitter} />
+            <SocialIcon Icon={FaInstagram} />
+            <SocialIcon Icon={FaFacebookF} />
+          </div>
+
+          {/* Desktop: Social icons column */}
+          <div className="sm:hidden lg:flex flex-col">
+>>>>>>> d00356b (fixed navigation bar , sidebar, footer)
             <h2 className="font-bold mb-2">Our Social</h2>
-            <div className="space-y-2">
+            <div className="sm:hidden flex-col flex gap-2">
               <SocialIcon Icon={FaTwitter} />
               <SocialIcon Icon={FaInstagram} />
               <SocialIcon Icon={FaFacebookF} />

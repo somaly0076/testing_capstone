@@ -10,7 +10,7 @@ import HeroSection from "./reusable/HeroSection";
 const cardItems = {
   title: "Company Name",
   description: "",
-  image: "https://live.staticflickr.com/65535/52371396945_89370af824_c_d.jpg",
+  image: "https://www.shutterstock.com/image-photo/woman-portrait-outdoor-happiness-university-260nw-2477885163.jpg",
 }
 
 export default function Home() {

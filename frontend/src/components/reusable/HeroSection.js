@@ -1,6 +1,6 @@
 import React from 'react';
 import { Search } from 'lucide-react';
-import BackgroundStudentWithLaptop from '../../assets/images/home-banner-neo.png';
+import HeroSectionImage from '../../assets/images/_18b5ae1d-efb8-46d8-974f-d5faab2df897.jpeg'
 
 const HeroSection = ({
   title = "DISCOVER YOUR FUTURE.",
@@ -9,7 +9,7 @@ const HeroSection = ({
   backgroundGradient = "from-blue-100",
   titleColor = "text-blue-900",
   subtitleColor = "text-blue-600",
-  mainImageSrc = BackgroundStudentWithLaptop,
+  mainImageSrc = "https://www.cambodianchildrensfund.org/imager/uploads/79423/SRP5623_bfebd3bb7357e8cc1407da2436215ce5.jpg",
   mainImageAlt = "University building",
   onSearch = () => {},
 }) => {

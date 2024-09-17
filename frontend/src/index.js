@@ -6,6 +6,7 @@ import "./index.css";
 import App from "./App";
 import "@fontsource/poppins/400.css"
 
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>

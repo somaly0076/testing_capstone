@@ -17,7 +17,13 @@ import JobDetailPage from "./pages/JobDetailPage";
 =======
 import AdminPanel from "./pages/Admin/AdminPanel";
 import ErrorMessage from "./components/ErorrMessage";
+<<<<<<< HEAD
 >>>>>>> 5790adb (admin panel , profile page)
+=======
+import UserProfile from "./components/UserProfile";
+import { ThemeProvider } from "@material-tailwind/react"; // Material Tailwind's ThemeProvider
+
+>>>>>>> d00356b (fixed navigation bar , sidebar, footer)
 const router = createBrowserRouter([
   {
     path: "/",
@@ -53,17 +59,18 @@ const router = createBrowserRouter([
   },
   {
     path: "/cardpage",
-    element: <CompanyCard/>,
+    element: <CompanyCard />,
   },
   {
     path: "/companydetail",
-    element: <CompanyDetail/>,
+    element: <CompanyDetail />,
   },
   {
-    path : "/scholarships",
-    element :''
+    path: "/profile",
+    element: <UserProfile />,
   },
   {
+<<<<<<< HEAD
     path : "/liveli-hood",
     element :''
   },
@@ -100,10 +107,27 @@ const router = createBrowserRouter([
     element: <ErrorMessage/>,
 >>>>>>> 5790adb (admin panel , profile page)
   }
+=======
+    path: "/admin-content",
+    element: <AdminPanel />,
+  },
+  {
+    path: "/error",
+    element: <ErrorMessage />,
+  },
+  {
+    path : "/profile",
+    element : <UserProfile/>
+  },
+>>>>>>> d00356b (fixed navigation bar , sidebar, footer)
 ]);
 
 function App() {
-  return <RouterProvider router={router}></RouterProvider>;
+  return (
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  );
 }
 
 export default App;

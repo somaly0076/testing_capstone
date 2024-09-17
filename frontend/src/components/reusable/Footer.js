@@ -17,7 +17,7 @@ const SocialIcon = ({ Icon }) => (
 
 const Footer = () => {
   return (
-    <footer className="bg-[#E6F3F9] text-gray-700 py-8 px-4 w-full bottom-0 mt-[64px]">
+    <footer className="bg-[#E6F3F9] text-gray-700 py-8 px-4 w-full mt-[64px] bottom-0">
       <section className="flex">
 
       <div className="container mx-auto">
@@ -95,7 +95,7 @@ const Footer = () => {
             </ul>
             <div className="md:hidden"></div>
           </div>
-          <div className="flex space-x-2 flex-col gap-5">
+          <div className="sm:flex lg:hidden sm:flex-row space-x-2 flex-col gap-5">
             <h2 className="sm:hidden font-bold mb-2">Our Social</h2>
             <SocialIcon Icon={FaTwitter} />
             <SocialIcon Icon={FaInstagram} />
@@ -103,9 +103,9 @@ const Footer = () => {
           </div>
 
           {/* Desktop: Social icons column */}
-          <div className="hidden md:block ">
+          <div className="sm:hidden lg:flex flex-col">
             <h2 className="font-bold mb-2">Our Social</h2>
-            <div className="space-y-2">
+            <div className="sm:hidden flex-col flex gap-2">
               <SocialIcon Icon={FaTwitter} />
               <SocialIcon Icon={FaInstagram} />
               <SocialIcon Icon={FaFacebookF} />

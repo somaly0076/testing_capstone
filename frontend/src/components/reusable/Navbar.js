@@ -22,7 +22,7 @@ const Navbar = () => {
     <>
       <nav className="bg-gray-100 h-[64px] fixed top-0 left-0 right-0 z-[1002]">
         {/* Desktop Navbar */}
-        <div className="flex justify-between items-center px-4 py-3 h-full sm:hidden">
+        <div className="flex justify-center gap-5 items-center px-4 py-3 h-full sm:hidden font-[poppins]">
           <Link to={'/'} className="text-xl font-bold">WHERE2</Link>
           <div className="flex space-x-4 sm:hidden">
             {menuItems.map((item) => (

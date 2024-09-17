@@ -11,6 +11,9 @@ import CompanyDetail from "./pages/CompanyDetail";
 import Profile from "./components/reusable/Profile";
 import AdminPanel from "./pages/Admin/AdminPanel";
 import ErrorMessage from "./components/ErorrMessage";
+import UserProfile from "./components/UserProfile";
+import { ThemeProvider } from "@material-tailwind/react"; // Material Tailwind's ThemeProvider
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -46,44 +49,36 @@ const router = createBrowserRouter([
   },
   {
     path: "/cardpage",
-    element: <CompanyCard/>,
+    element: <CompanyCard />,
   },
   {
     path: "/companydetail",
-    element: <CompanyDetail/>,
+    element: <CompanyDetail />,
   },
   {
-    path : "/scholarships",
-    element :''
+    path: "/profile",
+    element: <UserProfile />,
   },
   {
-    path : "/liveli-hood",
-    element :''
-  },
-  {
-    path : "/about-us",
-    element :''
-  },
-  {
-    path : "/extra-money",
-    element :''
-  },
-  {
-    path : "/profile",
-    element : <Profile/>
-  },
-  {
-    path : "/admin-content",
-    element : <AdminPanel/>
+    path: "/admin-content",
+    element: <AdminPanel />,
   },
   {
     path: "/error",
-    element: <ErrorMessage/>,
-  }
+    element: <ErrorMessage />,
+  },
+  {
+    path : "/profile",
+    element : <UserProfile/>
+  },
 ]);
 
 function App() {
-  return <RouterProvider router={router}></RouterProvider>;
+  return (
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  );
 }
 
 export default App;

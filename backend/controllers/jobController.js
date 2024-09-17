@@ -1,9 +1,9 @@
 const { where } = require("sequelize");
 const catchAsync = require("../utils/catchAsync");
 const Job = require("./../model/jobModel");
-
+const Company = require("./../model/companyModel")
 exports.getAllJobs = catchAsync(async (req, res,next) => {
-    const jobs = await Job.findAll();
+    const jobs = await Job.findAll({include:Company});
     res.status(200).json({
         status: 'success',
         amount: jobs.length,
@@ -76,3 +76,12 @@ exports.deleteJob = catchAsync(async (req, res, next) => {
     })
     next()
 });
+exports.getAssociateCompany = catchAsync(async (req, res) => {
+    const associatedJob = await Job.findAll();
+    res.status(200).json({
+        status: "success",
+        data: {
+            associatedJob
+        }
+    })
+})

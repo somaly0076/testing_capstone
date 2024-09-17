@@ -1,11 +1,13 @@
 const express = require('express');
-const { getAllCompany, addCompany, updateCompany, deleteCompany } = require('../controllers/companyController');
+const { getAllCompany, addCompany, updateCompany, deleteCompany, getAssociateJob } = require('../controllers/companyController');
 const router = express.Router()
 
 router
     .route('/')
     .get(getAllCompany);
-
+router
+    .route('/associatedjob')
+    .get(getAssociateJob)
 router
     .route('/addCompany')
     .post(addCompany);

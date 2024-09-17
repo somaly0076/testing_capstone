@@ -1,6 +1,6 @@
 const DataTypes = require('sequelize');
 const sequelize = require('../connection/connection');
-
+const Job = require('./jobModel')
 
 const Company = sequelize.define("company", {
     company_id: {
@@ -32,8 +32,16 @@ const Company = sequelize.define("company", {
 },
     { timestamps: false })
 
-Company.sync({alter:true}).then(() => {
+Company.sync({ alter: true }).then(() => {
     console.log('Company Table is created!!')
-})
+});
+// Company.hasMany(Job, {
+//     foreignKey: 'company_id'
+// })
+Company.associate = function () {
+    Company.hasMany(Job, { foreignKey: 'company_id' })
+    Job.belongsTo(Company,{foreignKey:'company_id'})
+}
+
 
 module.exports = Company;

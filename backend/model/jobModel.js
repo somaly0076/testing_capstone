@@ -1,6 +1,6 @@
 const { DataTypes, Op } = require('sequelize');
 const sequelize = require("../connection/connection")
-
+const Company = require("../model/companyModel")
 
 const Job = sequelize.define("job",{
     id: {
@@ -36,6 +36,12 @@ Job.sync({ alter: true }).then((req) => {
 }).catch(err => {
     console.log(err)
 });
+Job.belongsTo(Company, { foreignKey: 'id' });
+Company.hasMany(Job, { foreignKey: 'company_id' })
+// Job.associate = function () {
+//     // Job.hasMany(Company)
+//     Job.belongsTo(Company,{foreignKey:'id'})
+// }
 
 
 module.exports = Job;

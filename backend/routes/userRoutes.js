@@ -16,9 +16,9 @@ const {
   getAllUsers,
   photoUpload,
 } = require("../controllers/userController");
+
 const storage = require("./../utils/storage");
 const upload = multer({ storage });
-
 const router = express.Router();
 
 router.route("/").get(getAllUsers);

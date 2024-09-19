@@ -9,6 +9,7 @@ import InformationPage from "./pages/InformationPage";
 import CompanyCard from "./components/CompanyCard";
 import CompanyDetail from "./pages/CompanyDetail";
 import Profile from "./components/reusable/Profile";
+import UniversitiesPage from "./pages/UniversitiesPage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -55,8 +56,12 @@ const router = createBrowserRouter([
     element :''
   },
   {
-    path : "/liveli-hood",
+    path : "/livelihood",
     element :''
+  },
+  {
+    path : "/universities",
+    element: <UniversitiesPage />
   },
   {
     path : "/about-us",

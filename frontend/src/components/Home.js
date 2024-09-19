@@ -45,7 +45,7 @@ export default function Home() {
         <p>No token
          available</p>
       )} */}
-        <HeroSection/>
+      <HeroSection/>
       <div className="w-full overflow-y-scroll">
       <div className="w-fit flex ">
       <HomePageCard variant={"large"} cardItems={cardItems}/>

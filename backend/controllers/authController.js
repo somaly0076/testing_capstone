@@ -1,13 +1,15 @@
 const dotenv = require("dotenv");
-dotenv.config();
 const crypto = require("crypto");
-const { promisify } = require("util");
 const jwt = require("jsonwebtoken");
+const { promisify } = require("util");
+const { Op } = require("sequelize");
+
 const User = require("../model/userModel");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 const sendEmail = require("../utils/email");
-const { Op } = require("sequelize");
+
+dotenv.config();
 
 // Token creation
 const signToken = (id) => {
@@ -16,24 +18,29 @@ const signToken = (id) => {
   });
 };
 
+// Set cookie options
+const getCookieOptions = () => {
+  const expiresInDays = parseInt(process.env.JWT_COOKIE_EXPIRES_IN) || 7
+  const options = {
+    expires: new Date(Date.now() + expiresInDays * 24 * 60 * 60 * 1000),
+    httpOnly: true,
+  };
+  if (process.env.NODE_ENV === "production") {
+    options.secure = true;
+  }
+  return options;
+};
+
 // Token send
 const createSendToken = (user, statusCode, res) => {
   const token = signToken(user.id);
-  const cookieOptions = {
-    expires: new Date(
-      Date.now() +
-        (parseInt(process.env.JWT_COOKIE_EXPIRES_IN) || 7) * 24 * 60 * 60 * 1000
-    ),
-    httpOnly: true,
-  };
-  if (process.env.NODE_ENV === "production") cookieOptions.secure = true;
-
-  res.cookie("jwt", token, cookieOptions);
-
-  user.password = undefined;
-
+  const cookieOptions = getCookieOptions();
   const id = user.id;
   const userName = user.userName;
+
+  res.cookie("jwt", token, cookieOptions);
+  user.password = undefined;
+
 
   res.status(statusCode).json({
     status: "success",
@@ -58,31 +65,23 @@ exports.signup = catchAsync(async (req, res, next) => {
     formType, // Added formType
   } = req.body;
 
-  // Check if all required fields are provided
-  if (
-    !firstName ||
-    !lastName ||
-    !userName ||
-    !email ||
-    !password ||
-    !passwordConfirm ||
-    !formType
-  ) {
+  // Validate required fields
+  if ( !firstName || !lastName || !userName || !email || !password || !passwordConfirm || !formType ) {
     return next(new AppError("Please provide all required fields!", 400));
   }
 
-  // Check if passwords match
+  // Validate password confirmation
   if (password !== passwordConfirm) {
     return next(new AppError("Passwords do not match.", 400));
   }
 
-  // Check if user already exists
+  // Check for existing user
   const userExists = await User.findOne({ where: { email } });
   if (userExists) {
     return next(new AppError("Email already exists!", 400));
   }
 
-  // Determine user role based on formType
+  // Assign role based on formType
   const role = formType === "business" ? "admin" : "user";
 
   // Create new user with the appropriate role

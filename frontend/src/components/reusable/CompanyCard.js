@@ -78,7 +78,6 @@ const Card = ({ image, imageAlt, title, description, facebookLink, instagramLink
                                     <img src={Map} alt="Map" />
                                 </Link>
                             </div>
-
                             <Link to={`/company/companydetail/:company`} className="text-blue-500 hover:underline">
                                 <Button className="font- text-1xl p-2 px-3" variant="primary" size="large">
                                     Read More

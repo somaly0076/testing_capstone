@@ -13,6 +13,7 @@ import Profile from "./components/reusable/Profile";
 import ContactCard from "./components/reusable/ContactCard";
 import JobCardPage from "./pages/JobCardPage";
 import JobDetailPage from "./pages/JobDetailPage";
+import CollectionPanel from "./components/reusable/CollectionPanel";
 
 =======
 import AdminPanel from "./pages/Admin/AdminPanel";
@@ -135,10 +136,13 @@ const router = createBrowserRouter([
     element : <UserProfile/>
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> d00356b (fixed navigation bar , sidebar, footer)
 =======
     element : <Profile/>
   },
+=======
+>>>>>>> fe34cf9 (testing overflow scroll)
   {
     path: "/contactcard",
     element: <ContactCard/>
@@ -146,6 +150,10 @@ const router = createBrowserRouter([
   {
     path: "/jobdetail",
     element: <JobDetailPage/>
+  },
+  {
+    path: "/collection",
+    element: <CollectionPanel/>
   }
 >>>>>>> a5722ba (render jobCard and company profile)
 ]);

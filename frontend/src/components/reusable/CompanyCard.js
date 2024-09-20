@@ -20,10 +20,10 @@ const Card = ({ image, imageAlt, title, description, facebookLink, instagramLink
         { icon: Chrome, linkKey: websiteLink, isExternal: true },
     ];
     const links = { facebookLink, twitterLink, youtubeLink, websiteLink, instagramLink };
-    const companyUrl = title.toLowerCase().replace(/\s+/g, '-');
+    // const companyUrl = title.toLowerCase().replace(/\s+/g, '-');
     const workDetails = [
         { icon: MiniClock, linkKey: timeOut },
-        { icon: Calender, linkKey: deadLine.toLocaleString() },
+        { icon: Calender, linkKey: deadLine },
         { icon: MiniMap, linkKey: location },
     ]
 

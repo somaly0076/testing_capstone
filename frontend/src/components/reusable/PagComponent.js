@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentPage, selectCurrentPage, selectItemsPerPage, selectTotalItems } from '../../features/slices/paginationSlice';
 import Card from './CompanyCard';
-import { companies } from '../db';
+
+import { scholarships } from '../scholarships';
 import { MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight } from "react-icons/md";
 import ScholarDetails from './ScholarshipsDetail';
 function PaginationComponent() {
@@ -16,7 +17,7 @@ function PaginationComponent() {
   // Calculate the indices for slicing
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const currentItems = companies.slice(startIndex, endIndex);
+  const currentItems = scholarships.slice(startIndex, endIndex);
 
   // Handle page change
   const handlePageChange = (pageNumber) => {
@@ -96,24 +97,24 @@ function PaginationComponent() {
   const [isHoveredRight, setIsHoveredRight] = useState(false);
 
   return (
-    <div className="p-6">
+    <div >
       {/* Display paginated items */}
       <div className="flex flex-col items-center justify-center gap-6 mt-10 h-max">
-        {currentItems.map((company, index) => (
+        {currentItems.map((scholarships, index) => (
           <Card
             key={index}
-            image={company.image}
-            imageAlt={company.imageAlt}
-            title={company.title}
-            description={company.description}
-            facebookLink={company.facebookLink}
-            instagramLink={company.instagramLink}
-            twitterLink={company.twitterLink}
-            youtubeLink={company.youtubeLink}
-            websiteLink={company.websiteLink}
-            location={company.location}
-            deadLine={company.deadLine}
-            timeOut={company.timeOut}
+            image={scholarships.image}
+            imageAlt={scholarships.imageAlt}
+            title={scholarships.title}
+            description={scholarships.description}
+            facebookLink={scholarships.facebookLink}
+            instagramLink={scholarships.instagramLink}
+            twitterLink={scholarships.twitterLink}
+            youtubeLink={scholarships.youtubeLink}
+            websiteLink={scholarships.websiteLink}
+            location={scholarships.location}
+            deadLine={scholarships.deadLine}
+            timeOut={scholarships.timeOut}
           />
         ))}
       </div>

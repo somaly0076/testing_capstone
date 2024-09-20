@@ -20,7 +20,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-gray-100 h-[64px] fixed top-0 left-0 right-0 z-[1002]">
+      <nav className="bg-white h-[64px] fixed top-0 left-0 right-0 z-[49] ">
         {/* Desktop Navbar */}
         <div className="flex justify-between items-center px-4 py-3 h-full sm:hidden">
           <div className="text-xl font-bold">WHERE2</div>

@@ -5,6 +5,8 @@ module.exports = {
     screens: {
       'sm': {'max': '980px'}, // Mobile-first approach for max-width
       'lg': {'min': '1004px'}, // Desktop-first approach for min-width
+      'md': {'min': '768px'}, 
+
     },
     extend: {},
   },

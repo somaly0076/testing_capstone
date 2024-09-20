@@ -6,7 +6,7 @@ export const Users = [
         userName : "Johny69",
         email : "john.doe@example.com",
         password : "password123",
-        name : firstName + lastName,
+        // name : firstName + lastName,
         gender : "lesbian",
         role : "admin"
     },
@@ -17,7 +17,7 @@ export const Users = [
         userName : "Johny69",
         email : "Jack.doe@example.com",
         password : "password123",
-        name : firstName + lastName,
+        // name : firstName + lastName,
         gender : "male",
         role : "developer",
         entity : "University",
@@ -30,7 +30,7 @@ export const Users = [
         userName : "Jeep69",
         email : "Jeep.doe@example.com",
         password : "password123",
-        name : firstName + lastName,
+        // name : firstName + lastName,
         gender : "female",
         role : "user"
     }

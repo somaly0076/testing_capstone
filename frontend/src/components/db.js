@@ -12,7 +12,8 @@ export const companies =
     websiteLink : "https://pineapplecompany.com/",
     location : "Phnom Penh, Cambodia",
     deadLine : "10/10/2022",
-    timeOut : "10:00 AM"
+    timeOut : "10:00 AM",
+    
 },
 {image : 'https://m.media-amazon.com/images/I/514q4uEjRaL._UF350,350_QL80_.jpg',
 title : "University of Autism",
@@ -421,6 +422,16 @@ timeOut : "10:00 AM"
     location : "Phnom Penh, Cambodia",
     deadLine : "10/10/2022",
     timeOut : "10:00 AM"
+},
+{image : 'https://m.media-amazon.com/images/I/514q4uEjRaL._UF350,350_QL80_.jpg',
+title : "University of Autism",
+description : "Lorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipisit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipiLorem ipsum dolor sit amet, consectetur adipi",
+instagramLink : "https://www.instagram.com/pineapplecompany/",
+youtubeLink : "https://www.youtube.com/channel/pineapplecompany/",
+websiteLink : "https://pineapplecompany.com/",
+location : "Phnom Penh, Cambodia",
+deadLine : "10/10/2022",
+timeOut : "10:00 AM"
 },
 {image : 'https://m.media-amazon.com/images/I/514q4uEjRaL._UF350,350_QL80_.jpg',
 title : "University of Autism",

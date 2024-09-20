@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { companies } from "../../components/db";
+import { scholarships } from "../../components/scholarships";
 const paginationSlice = createSlice({
   name: 'pagination',
   initialState: {
     currentPage: 1,
     itemsPerPage: 3, // Fixed naming to match selector and action
-    totalItems: companies.length,
+    totalItems: scholarships.length,
     
   },
   reducers: {

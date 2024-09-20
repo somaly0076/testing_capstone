@@ -28,7 +28,7 @@ const Card = ({ image, imageAlt, title, description, facebookLink, instagramLink
     ]
 
     return (
-        <div className="lg:h-[348px] lg:w-[676px] mx-auto mb-[64px]">
+        <div className="lg:h-[348px] lg:w-[890px] mx-auto mb-[64px]">
             <div className={`${cardBody} justify-center `}>
                 <div className="h-[300px] rounded-xl">
                     <img className="min-w-full max-h-full object-fit " src={image} alt={imageAlt || title} />

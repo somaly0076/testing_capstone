@@ -11,7 +11,7 @@ import Calender from '../../assets/svg/calender.svg';
 import { NODE_ENV } from '../../constants';
 
 
-const Card = ({ image, imageAlt, title, description, facebookLink, instagramLink, twitterLink, youtubeLink, websiteLink, location, deadLine, timeOut }) => {
+const Card = ({ image, imageAlt, title, description, facebookLink, instagramLink, twitterLink, youtubeLink, websiteLink, location, deadLine, timeOut, }) => {
     const socialMediaIcons = [
         { icon: Facebook, linkKey: facebookLink },
         { icon: Twitter, linkKey: twitterLink },

@@ -12,8 +12,8 @@ const Navbar = () => {
 
   const menuItems = [
     { name: "Universities", to: "/login" },
-    { name: "Scholarships", to: "/scholar-ships" },
-    { name: "Livelihood", to: "/liveli-hood" },
+    { name: "Scholarships", to: "/scholarships" },
+    { name: "Livelihood", to: "/livelihood" },
     { name: "About Us", to: "/about-us" },
     { name: "Extra money", to: "/extra-money" },
   ];

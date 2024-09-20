@@ -60,7 +60,7 @@ const router = createBrowserRouter([
     element : <ScholarDetailPage/>
   },
   {
-    path : "/liveli-hood",
+    path : "/livelihood",
     element :''
   },
   {

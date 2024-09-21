@@ -4,7 +4,8 @@ import PaginationComponent from "./reusable/PagComponent";
 import FilterComponent from "./reusable/Filter";
 import React, { useState } from 'react';
 import { scholarships } from "./scholarships";
-export default function ScholarshipList() {
+
+export default function UniversityList() {
     const items = [
         {
           id:'2132',

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import InputField from "../components/reusable/InputField";
-import Button from "../components/reusable/Button";
+import InputField from "./reusable/InputField";
+import Button from "./reusable/Button";
 import { resetPassword } from "../features/slices/authSlice";
 
 export default function ResetPassword() {

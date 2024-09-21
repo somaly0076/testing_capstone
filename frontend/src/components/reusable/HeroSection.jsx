@@ -21,6 +21,10 @@ const HeroSection = ({
 
   return (
     <section className="relative w-full sm:h-[517px] lg:h-[859px] z-[0]">
+          <header className="max-w-container mx-auto p-4">
+      <h1 className="text-h1 tablet:text-h1p desktop:text-h1">Welcome to Our App</h1>
+      <p className="text-p tablet:text-pp">This is a responsive header component.</p>
+    </header>
       <div className="relative w-full h-full bg-white text-center">
         <div 
           className={`inset-0 bg-gradient-to-b ${backgroundGradient} opacity-50`} 

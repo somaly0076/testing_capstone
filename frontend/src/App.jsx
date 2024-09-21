@@ -10,6 +10,7 @@ import CompanyCard from "./components/CompanyCard";
 import CompanyDetail from "./pages/CompanyDetail";
 import ScholarshipListPage from "./pages/ScholarshipListPage";
 import ScholarDetailPage from "./pages/ScolarshipsDetailPage";
+
 const router = createBrowserRouter([
   {
     path: "/",

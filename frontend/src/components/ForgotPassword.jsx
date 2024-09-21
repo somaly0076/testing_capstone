@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import InputField from "../components/reusable/InputField";
-import Button from "../components/reusable/Button";
+import InputField from "./reusable/InputField";
+import Button from "./reusable/Button";
 
 export default function ForgotPassword() {
   const navigate = useNavigate();

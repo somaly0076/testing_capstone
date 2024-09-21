@@ -6,6 +6,7 @@ import { NODE_ENV } from "../constants";
 import HomePageCard from "./reusable/HomePageCard";
 import NavBar from "../components/reusable/Navbar";
 import HeroSection from "./reusable/HeroSection";
+import Header from "./reusable/Header";
 
 const cardItems = {
   title: "Company Name",

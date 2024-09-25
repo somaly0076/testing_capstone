@@ -28,7 +28,7 @@ const FavoriteCard = ({ title, description, facebookLink, instagramLink, twitter
     ]
 
     return (
-        <div className="lg:h-[348px] md:w-[1100px]  mx-auto mb-[64px]">
+        <div className="lg:h-[348px]  mx-auto mb-[64px]">
             <div className={`${cardBody}`}>
                 <div>
                     <div className="p-6 pb-0 ">

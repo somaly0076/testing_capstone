@@ -2,8 +2,8 @@ const { where } = require("sequelize");
 const catchAsync = require("../utils/catchAsync");
 const Job = require("./../model/jobModel");
 const Company = require("./../model/companyModel")
-exports.getAllJobs = catchAsync(async (req, res,next) => {
-    const jobs = await Job.findAll({include:Company});
+// exports.getAllJobs = catchAsync(async (req, res,next) => {
+//     const jobs = await Job.findAll({include:Company});
 
 exports.getAllJobs = catchAsync(async (req, res,next) => {
     const jobs = await Job.findAll();
